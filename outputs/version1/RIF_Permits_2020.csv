@@ -1,0 +1,265 @@
+,Ring,SMART,PED_ORIENT,LANDUSE,SPC_LU,GN_VA_LU,UNITS,UNITS_VAL,COST,YEAR
+0,1,In,0,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,246.0,0.0,2020
+1,1,In,0,Amusement Park,TOURIST ATTRACTIONS,Other,acre,3.1900000000000004,105213.95999999999,2020
+2,1,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,-94.0,1054192.53,2020
+3,1,In,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,29706.0,0.0,2020
+4,1,In,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,42320.0,0.0,2020
+5,1,In,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,-357.0,0.0,2020
+6,1,In,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,-17188.18,0.0,2020
+7,1,In,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,7.0,61725.61,2020
+8,1,In,0,Convenience market,"STORES, ONE STORY",Commercial/Retail,sq. ft.,150.0,0.0,2020
+9,1,In,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,52131.1,0.0,2020
+10,1,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,-42.629999999999995,311722.35000000003,2020
+11,1,In,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,470.0,0.0,2020
+12,1,In,0,Fast Food Rest. w/o Drive-Thru,"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,150.0,9651.82,2020
+13,1,In,0,Furniture Store (free standing),"WHOLESALE, PRODUCE, MFG",Commercial/Retail,sq. ft.,21918.0,0.0,2020
+14,1,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,193808.13,17459088.02999999,2020
+15,1,In,0,"General Office Building [150,001-200,000]",PROFESSIONAL BUILDING,Office,sq. ft.,155882.0,0.0,2020
+16,1,In,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,42826.33,32375.66,2020
+17,1,In,0,"General Office Building [700,001-more]","OFFICE, MULTI-STORY",Office,sq. ft.,773285.0,0.0,2020
+18,1,In,0,Health/Fitness,OUTDOOR RECREATIONAL,Other,sq. ft.,1905.0,2509.12,2020
+19,1,In,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,77917.0,94808.31,2020
+20,1,In,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,527.0,0.0,2020
+21,1,In,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,6257.0,1765357.43,2020
+22,1,In,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,412.0,0.0,2020
+23,1,In,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,-286.0,0.0,2020
+24,1,In,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,16218.0,100075.31,2020
+25,1,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,3434.0,0.0,2020
+26,1,In,0,Motel,"HOTELS, MOTELS",Commercial/Retail,room,11.0,0.0,2020
+27,1,In,0,Movie Theater,ENCLOSED THEATER/AUDITORIUM,Commercial/Retail,screen,1.0,0.0,2020
+28,1,In,0,Quality Restaurant,"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,3811.0,0.0,2020
+29,1,In,0,Quality Restaurant/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,84.0,0.0,2020
+30,1,In,0,Racquet Club,OUTDOOR RECREATIONAL,Other,court,2.0,0.0,2020
+31,1,In,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,-2.0,46749.64,2020
+32,1,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,47567.79000000001,5531441.99,2020
+33,1,In,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,181440.01,2306997.33,2020
+34,1,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,-40.58,2036238.9400000002,2020
+35,1,In,0,Tennis Courts,OUTDOOR RECREATIONAL,Other,court,1.0,30021.35,2020
+36,1,In,0,Unknown*,UNKNOWN,Other,unknown,-7068838.12,162486.97,2020
+37,1,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,-137607.29,9373347.63,2020
+38,2,In,0,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,-20.0,0.0,2020
+39,2,In,0,Amusement Park,TOURIST ATTRACTIONS,Other,acre,13.930000000000001,47656.36,2020
+40,2,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,-15.409999999999997,1145956.67,2020
+41,2,In,0,Assisted Living Facility,HOMES FOR THE AGED,Other,bed,22.0,0.0,2020
+42,2,In,0,Bank (Drive-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-6225.0,0.0,2020
+43,2,In,0,Bank (Walk-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-13069.0,0.0,2020
+44,2,In,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,20344.0,897781.76,2020
+45,2,In,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,80859.0,0.0,2020
+46,2,In,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,-11783.21,0.0,2020
+47,2,In,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,20287.0,217683.53,2020
+48,2,In,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,2266.0,0.0,2020
+49,2,In,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,8.0,11311.34,2020
+50,2,In,0,Continuing Care Retirement Community,HOMES FOR THE AGED,Other,unit,196.0,0.0,2020
+51,2,In,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,5839.0,342354.58,2020
+52,2,In,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,14427.0,0.0,2020
+53,2,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,55.370000000000005,184211.24000000002,2020
+54,2,In,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,143.0,0.0,2020
+55,2,In,0,Fast Food Rest. w/ Drive-Thru,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,3081.0,172589.51,2020
+56,2,In,0,Fast Food Rest. w/o Drive-Thru,"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,2496.0,0.0,2020
+57,2,In,0,Furniture Store (free standing),"WHOLESALE, PRODUCE, MFG",Commercial/Retail,sq. ft.,3660.0,0.0,2020
+58,2,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,29710.5,5879735.76,2020
+59,2,In,0,"General Office Building [300,001-400,000]","OFFICE, MULTI-STORY",Office,sq. ft.,355474.0,0.0,2020
+60,2,In,0,"General Office Building [400,001-500,000]","OFFICE, MULTI-STORY",Office,sq. ft.,491278.0,0.0,2020
+61,2,In,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,-84406.99,0.0,2020
+62,2,In,0,Health/Fitness,OUTDOOR RECREATIONAL,Other,sq. ft.,16659.0,0.0,2020
+63,2,In,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,16472.0,0.0,2020
+64,2,In,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,360.0,35588.4,2020
+65,2,In,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1485.0,4930223.24,2020
+66,2,In,0,High-Turnover Restaurant,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,-3060.0,0.0,2020
+67,2,In,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,314.0,52509.84,2020
+68,2,In,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,95.0,7603.53,2020
+69,2,In,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,-2164.0,10753.67,2020
+70,2,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,3218.23,0.01,2020
+71,2,In,0,Mini-Warehouse,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,110707.0,0.0,2020
+72,2,In,0,Motel,"HOTELS, MOTELS",Commercial/Retail,room,-16.0,8792.82,2020
+73,2,In,0,Quality Restaurant,"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,3378.0,0.0,2020
+74,2,In,0,Quality Restaurant/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,-175.89,0.0,2020
+75,2,In,0,Senior Adult Housing-Attached,HOMES FOR THE AGED,Other,unit,175.0,0.0,2020
+76,2,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,26527.060000000005,2582896.22,2020
+77,2,In,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,51848.71,406300.58999999997,2020
+78,2,In,0,"Shopping Center/General Retail [100,001-200,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,172239.0,78757.43,2020
+79,2,In,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-20112.91,135900.09,2020
+80,2,In,0,"Shopping Center/General Retail [600,001-800,000]",REGIONAL SHOPPING CENTER,Commercial/Retail,sq. ft.,78.0,1650.67,2020
+81,2,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,-8.0,409412.83000000025,2020
+82,2,In,0,Supermarket (free standing),SUPERMARKETS,Commercial/Retail,sq. ft.,18244.0,0.0,2020
+83,2,In,0,Truck Terminals,SERVICE STATIONS,Commercial/Retail,sq. ft.,133036.0,0.0,2020
+84,2,In,0,Unknown*,UNKNOWN,Other,unknown,-9338083.859999998,0.02,2020
+85,2,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,-20974.78,951905.6,2020
+86,2,In,1,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,7.0,0.0,2020
+87,2,In,1,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,113.0,8630.26,2020
+88,2,In,1,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,9281.0,0.0,2020
+89,2,In,1,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,29131.0,0.0,2020
+90,2,In,1,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,18.0,49344.29,2020
+91,2,In,1,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,-6.0,9716.44,2020
+92,2,In,1,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,866.0,25553.84,2020
+93,2,In,1,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,180.0,0.0,2020
+94,2,In,1,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,38.0,327742.72,2020
+95,2,In,1,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,2446.0,0.0,2020
+96,2,In,1,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,2400.0,702209.4,2020
+97,2,In,1,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-42608.0,0.0,2020
+98,2,In,1,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,5.5,53943.43000000001,2020
+99,2,Out,0,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,19.0,0.0,2020
+100,2,Out,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,283.36,72493.19,2020
+101,2,Out,0,Bank (Walk-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-17509.0,0.0,2020
+102,2,Out,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,-13987.0,129578.43,2020
+103,2,Out,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,-16785.0,0.0,2020
+104,2,Out,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,63463.08,0.0,2020
+105,2,Out,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,10047.0,0.0,2020
+106,2,Out,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,375.0,0.0,2020
+107,2,Out,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,2.0,0.0,2020
+108,2,Out,0,Congregate Care Facility,"SANITARIUM, CONVALESCENT & REST HOME",Other,unit,12.0,0.0,2020
+109,2,Out,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,1366.0,76690.74,2020
+110,2,Out,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,-2162.0,0.0,2020
+111,2,Out,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,88.91,237641.62,2020
+112,2,Out,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,-12725.8,2401816.579999999,2020
+113,2,Out,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,-836.8,3721.72,2020
+114,2,Out,0,Health/Fitness,OUTDOOR RECREATIONAL,Other,sq. ft.,6879.0,0.0,2020
+115,2,Out,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,25086.52,89254.53,2020
+116,2,Out,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,188.0,0.0,2020
+117,2,Out,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1434.0,609913.96,2020
+118,2,Out,0,High-Turnover Restaurant,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,2446.0,0.0,2020
+119,2,Out,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,182.31,270625.17,2020
+120,2,Out,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,172.0,1460534.03,2020
+121,2,Out,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,5666.0,0.0,2020
+122,2,Out,0,Motel,"HOTELS, MOTELS",Commercial/Retail,room,-127.0,0.0,2020
+123,2,Out,0,Quality Restaurant,"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,7362.0,0.0,2020
+124,2,Out,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,917.9800000000034,909957.34,2020
+125,2,Out,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,78405.01999999999,1989748.27,2020
+126,2,Out,0,"Shopping Center/General Retail [800,001-1,000,000]",REGIONAL SHOPPING CENTER,Commercial/Retail,sq. ft.,5084.0,99190.42,2020
+127,2,Out,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,14.189999999999998,725031.49,2020
+128,2,Out,0,University (20 SF/St),COLLEGES,Other,student,16.0,37838.27,2020
+129,2,Out,0,Unknown*,UNKNOWN,Other,unknown,-1327966.42,0.01,2020
+130,2,Out,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,393077.6,758065.73,2020
+131,2,Out,1,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,12.0,0.0,2020
+132,2,Out,1,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,-751.0,523647.3,2020
+133,2,Out,1,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,1387.0,0.0,2020
+134,2,Out,1,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,17484.0,0.0,2020
+135,2,Out,1,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-607.0,27451.02,2020
+136,2,Out,1,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,-1.0,14350.91,2020
+137,3,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,2.0,5353.83,2020
+138,3,In,0,Assisted Living Facility,HOMES FOR THE AGED,Other,bed,229.0,633034.77,2020
+139,3,In,0,Bank (Drive-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,3234.0,0.0,2020
+140,3,In,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,0.0,0.0,2020
+141,3,In,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,0.0,0.0,2020
+142,3,In,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,3267.0,42098.06,2020
+143,3,In,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,3160.0,0.0,2020
+144,3,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,9.0,11962.54,2020
+145,3,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,17264.92,242664.46000000002,2020
+146,3,In,0,"General Office Building [100,001-150,000]",PROFESSIONAL BUILDING,Office,sq. ft.,-3405.2,0.54,2020
+147,3,In,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,86634.0,0.0,2020
+148,3,In,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,2721.0,5170.54,2020
+149,3,In,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,27.0,0.0,2020
+150,3,In,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1063.0,2199821.99,2020
+151,3,In,0,High-Turnover Restaurant,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,-2213.36,0.0,2020
+152,3,In,0,Hospital,HOSPITALS,Other,sq. ft.,126096.0,2302462.52,2020
+153,3,In,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,-44726.0,48262.32,2020
+154,3,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,2227.0,51032.76,2020
+155,3,In,0,Mini-Warehouse,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,176116.0,30119.379999999997,2020
+156,3,In,0,Nursing Home,"SANITARIUM, CONVALESCENT & REST HOME",Other,bed,28.0,2736.0,2020
+157,3,In,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,-21.490000000000002,10050.69,2020
+158,3,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,11290.68,986775.6100000001,2020
+159,3,In,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,48174.0,288508.6,2020
+160,3,In,0,"Shopping Center/General Retail [100,001-200,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,0.0,0.0,2020
+161,3,In,0,"Shopping Center/General Retail [200,001-300,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,-61832.95999999999,0.0,2020
+162,3,In,0,"Shopping Center/General Retail [300,001-400,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,-12784.16,0.0,2020
+163,3,In,0,"Shopping Center/General Retail [800,001-1,000,000]",REGIONAL SHOPPING CENTER,Commercial/Retail,sq. ft.,2256.0,0.0,2020
+164,3,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,20.590000000000003,318369.81000000006,2020
+165,3,In,0,Unknown*,UNKNOWN,Other,unknown,-419664.34,1042580.4,2020
+166,3,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,451972.0,2399687.4299999997,2020
+167,3,In,1,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,120.0,207241.56,2020
+168,3,In,1,Assisted Living Facility,HOMES FOR THE AGED,Other,bed,13.0,0.0,2020
+169,3,In,1,Bank (Drive-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-2460.0,0.0,2020
+170,3,In,1,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,6975.0,538911.22,2020
+171,3,In,1,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,28736.0,0.0,2020
+172,3,In,1,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,-2.0,0.0,2020
+173,3,In,1,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,-3797.0,0.0,2020
+174,3,In,1,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,5.0,15413.74,2020
+175,3,In,1,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,12057.0,102228.73,2020
+176,3,In,1,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,234.0,0.0,2020
+177,3,In,1,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,170.0,0.0,2020
+178,3,In,1,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,6038.0,985907.1,2020
+179,3,In,1,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-224.0,0.0,2020
+180,3,In,1,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,-3.0,80572.48999999999,2020
+181,3,In,1,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,-61822.0,1029937.15,2020
+182,3,Out,0,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,36.0,0.0,2020
+183,3,Out,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,848.0,2458815.5799999996,2020
+184,3,Out,0,Assisted Living Facility,HOMES FOR THE AGED,Other,bed,110.0,304077.84,2020
+185,3,Out,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,38157.0,821143.25,2020
+186,3,Out,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,51914.0,0.0,2020
+187,3,Out,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,26889.0,176745.14,2020
+188,3,Out,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,6823.0,0.0,2020
+189,3,Out,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,1832.0,0.0,2020
+190,3,Out,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,546.0,3262304.379999997,2020
+191,3,Out,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,4642.0,130470.09,2020
+192,3,Out,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,23939.02,65641.94,2020
+193,3,Out,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,15.0,49863.82000000001,2020
+194,3,Out,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,64.0,0.0,2020
+195,3,Out,0,Fast Food Rest. w/ Drive-Thru,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,-1832.0,14653.07,2020
+196,3,Out,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,64272.98,1305784.4500000002,2020
+197,3,Out,0,"General Office Building [100,001-150,000]",PROFESSIONAL BUILDING,Office,sq. ft.,-2283.0,0.0,2020
+198,3,Out,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,158564.0,2152125.75,2020
+199,3,Out,0,High School (25 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,212.0,108880.64,2020
+200,3,Out,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,-21465.73,0.0,2020
+201,3,Out,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,172.0,9181.92,2020
+202,3,Out,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,469.0,2266928.1899999995,2020
+203,3,Out,0,Industrial Park,LIGHT MANUFACTURING,Industrial/Manufacturing,sq. ft.,11100.0,79764.6,2020
+204,3,Out,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,320.3,0.0,2020
+205,3,Out,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,-223722.12000000002,204306.63999999998,2020
+206,3,Out,0,Marina,"AIRPORTS, TERMINALS, PIERS",Other,berth,1.0,2954.82,2020
+207,3,Out,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,33988.0,902023.82,2020
+208,3,Out,0,Mobile Home,MOBILE HOME,Single-family,unit,-14.0,0.0,2020
+209,3,Out,0,Racquet Club,OUTDOOR RECREATIONAL,Other,court,8.0,207998.44,2020
+210,3,Out,0,Senior Adult Housing-Attached,HOMES FOR THE AGED,Other,unit,85.0,0.0,2020
+211,3,Out,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,2.0,83214.23,2020
+212,3,Out,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,20747.07,437241.09,2020
+213,3,Out,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,63888.0,963976.25,2020
+214,3,Out,0,"Shopping Center/General Retail [100,001-200,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,5315.0,50550.479999999996,2020
+215,3,Out,0,"Shopping Center/General Retail [200,001-300,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,330.0,6552.48,2020
+216,3,Out,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,67922.0,721473.55,2020
+217,3,Out,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,134.69,1360035.2599999981,2020
+218,3,Out,0,Tennis Courts,OUTDOOR RECREATIONAL,Other,court,4.0,0.0,2020
+219,3,Out,0,University (20 SF/St),COLLEGES,Other,student,0.0,0.0,2020
+220,3,Out,0,Unknown*,UNKNOWN,Other,unknown,-141918.81000000003,0.0,2020
+221,3,Out,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,4959665.88,24797620.32,2020
+222,3,Out,1,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,2.0,0.0,2020
+223,3,Out,1,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,15700.0,219146.76,2020
+224,3,Out,1,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,5394.0,84705.36,2020
+225,3,Out,1,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,0.0,10275.83,2020
+226,4,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,212.0,1196306.5,2020
+227,4,In,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,3628.0,0.0,2020
+228,4,In,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,2814.0,0.0,2020
+229,4,In,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,53.0,318197.8,2020
+230,4,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,14.0,49040.560000000005,2020
+231,4,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,4523.2,10108.050000000001,2020
+232,4,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,1611.0,46184.48,2020
+233,4,In,0,Motel,"HOTELS, MOTELS",Commercial/Retail,room,-13.0,0.0,2020
+234,4,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-2465.0,119881.1,2020
+235,4,In,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,675.0,7027.35,2020
+236,4,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,56.0,586875.5000000003,2020
+237,4,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,27733.0,436795.31999999995,2020
+238,4,In,1,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,322.0,1762029.9200000002,2020
+239,4,In,1,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,5781.0,31339.38,2020
+240,4,In,1,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,55.0,249182.47000000003,2020
+241,4,In,1,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,10.0,10275.83,2020
+242,4,In,1,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,1959.0,20822.78,2020
+243,4,In,1,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1064.0,1282280.07,2020
+244,4,In,1,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,984.0,0.0,2020
+245,4,In,1,Mobile Home,MOBILE HOME,Single-family,unit,-56.0,0.0,2020
+246,4,In,1,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,33806.0,2016123.2600000002,2020
+247,4,In,1,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,5.0,207195.78,2020
+248,4,Out,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,34.0,11257.650000000001,2020
+249,4,Out,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,4034.0,141097.52,2020
+250,4,Out,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,978.0,5467673.399999994,2020
+251,4,Out,0,Congregate Care Facility,"SANITARIUM, CONVALESCENT & REST HOME",Other,unit,42.0,1316.72,2020
+252,4,Out,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,6119.0,367555.48,2020
+253,4,Out,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,8026.0,66638.26999999999,2020
+254,4,Out,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,256.0,1072580.9999999986,2020
+255,4,Out,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,19811.0,298125.93000000005,2020
+256,4,Out,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,1510.0,5956.35,2020
+257,4,Out,0,Mobile Home,MOBILE HOME,Single-family,unit,-107.0,0.0,2020
+258,4,Out,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,6500.0,129238.85,2020
+259,4,Out,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,62644.0,1417.12,2020
+260,4,Out,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,550.8299999999999,5286809.079999992,2020
+261,4,Out,0,Unknown*,UNKNOWN,Other,unknown,-3983.6,5238.31,2020
+262,4,Out,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,1355087.0,7006574.56,2020
+263,4,Out,1,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,1.0,8392.11,2020

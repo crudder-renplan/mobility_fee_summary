@@ -1,0 +1,230 @@
+,Ring,SMART,PED_ORIENT,LANDUSE,SPC_LU,GN_VA_LU,UNITS,UNITS_VAL,COST,YEAR
+0,1,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,6.75,227749.97999999998,2017
+1,1,In,0,Bank (Walk-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,2735.0,0.0,2017
+2,1,In,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,4664.0,0.0,2017
+3,1,In,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,-410.0,0.0,2017
+4,1,In,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,5291.0,0.0,2017
+5,1,In,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,1365.0,0.0,2017
+6,1,In,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,-9.0,249576.96,2017
+7,1,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,18.0,54465.85,2017
+8,1,In,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,217.0,22308.61,2017
+9,1,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,55215.280000000006,9693360.57,2017
+10,1,In,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,72194.0,4371.94,2017
+11,1,In,0,Health/Fitness,OUTDOOR RECREATIONAL,Other,sq. ft.,9700.0,26413.96,2017
+12,1,In,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,52989.0,2050556.17,2017
+13,1,In,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,597.0,47204.92,2017
+14,1,In,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,2375.0,316190.36000000004,2017
+15,1,In,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,250.0,1697824.2700000003,2017
+16,1,In,0,Industrial Park,LIGHT MANUFACTURING,Industrial/Manufacturing,sq. ft.,-2009.0,0.0,2017
+17,1,In,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,213.0,0.0,2017
+18,1,In,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,-10551.0,199131.49,2017
+19,1,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,4107.0,0.0,2017
+20,1,In,0,Mini-Warehouse,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,241011.0,0.0,2017
+21,1,In,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,-8.0,0.0,2017
+22,1,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,68924.67,4491219.060000002,2017
+23,1,In,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,136579.0,4645087.2700000005,2017
+24,1,In,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,0.0,0.0,2017
+25,1,In,0,"Shopping Center/General Retail [500,001-600,000]",REGIONAL SHOPPING CENTER,Commercial/Retail,sq. ft.,518147.0,0.0,2017
+26,1,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,-31.0,1720596.1499999997,2017
+27,1,In,0,Tennis Courts,OUTDOOR RECREATIONAL,Other,court,8.0,0.0,2017
+28,1,In,0,Truck Terminals,SERVICE STATIONS,Commercial/Retail,sq. ft.,10500.0,92942.85,2017
+29,1,In,0,Unknown*,Unknown,Unknown,0,-406997.86,0.0,2017
+30,1,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,-186899.0,1458866.38,2017
+31,2,In,0,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,24.0,0.0,2017
+32,2,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,-35.0,335286.49,2017
+33,2,In,0,Assisted Living Facility,HOMES FOR THE AGED,Other,bed,6.0,0.0,2017
+34,2,In,0,Bank (Walk-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,3918.0,0.0,2017
+35,2,In,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,-714.0,0.0,2017
+36,2,In,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,11628.0,149884.14,2017
+37,2,In,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,-15057.0,10037.960000000001,2017
+38,2,In,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,2691.0,0.0,2017
+39,2,In,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,1855.0,0.0,2017
+40,2,In,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,89.34,122825.53999999998,2017
+41,2,In,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,10524.0,287833.82,2017
+42,2,In,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,-12500.0,0.0,2017
+43,2,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,1.0,19363.47,2017
+44,2,In,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,56.0,9760.02,2017
+45,2,In,0,Fast Food Rest. w/o Drive-Thru,"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-2918.0,0.0,2017
+46,2,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,-9627.580000000002,678552.1900000001,2017
+47,2,In,0,"General Office Building [100,001-150,000]",PROFESSIONAL BUILDING,Office,sq. ft.,-1605.0,0.0,2017
+48,2,In,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,-51360.0,455493.47,2017
+49,2,In,0,"General Office Building [600,001-700,000]","OFFICE, MULTI-STORY",Office,sq. ft.,-345.0,0.0,2017
+50,2,In,0,"General Office Building [700,001-more]","OFFICE, MULTI-STORY",Office,sq. ft.,8100000.0,58454460.0,2017
+51,2,In,0,Health/Fitness,OUTDOOR RECREATIONAL,Other,sq. ft.,1880.0,0.0,2017
+52,2,In,0,High School (25 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,130.0,0.0,2017
+53,2,In,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,24961.0,134342.4,2017
+54,2,In,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,790.0,97186.6,2017
+55,2,In,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1366.0,1363163.9399999997,2017
+56,2,In,0,High-Turnover Restaurant,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,7700.0,0.0,2017
+57,2,In,0,Hospital,HOSPITALS,Other,sq. ft.,1900.0,32540.92,2017
+58,2,In,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,419.0,2960408.2699999996,2017
+59,2,In,0,Industrial Park,LIGHT MANUFACTURING,Industrial/Manufacturing,sq. ft.,-18888.0,0.0,2017
+60,2,In,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,68.0,0.0,2017
+61,2,In,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,-1617.0,6297.14,2017
+62,2,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,7543.0,0.0,2017
+63,2,In,0,Mini-Warehouse,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,401866.0,0.0,2017
+64,2,In,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,-6.0,0.0,2017
+65,2,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-9032.0,4092269.7999999993,2017
+66,2,In,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,104281.0,385953.14,2017
+67,2,In,0,"Shopping Center/General Retail [100,001-200,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,320.0,5687.74,2017
+68,2,In,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,67006.0,0.0,2017
+69,2,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,-11.899999999999999,560034.8700000003,2017
+70,2,In,0,Supermarket (free standing),SUPERMARKETS,Commercial/Retail,sq. ft.,8686.0,150640.43,2017
+71,2,In,0,Truck Terminals,SERVICE STATIONS,Commercial/Retail,sq. ft.,427744.0,3786261.56,2017
+72,2,In,0,Unknown*,Unknown,Unknown,0,-20.15,0.0,2017
+73,2,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,220707.2,2254836.96,2017
+74,2,Out,0,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,29.0,0.0,2017
+75,2,Out,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,356.49999999999994,1730780.2900000003,2017
+76,2,Out,0,Bank (Drive-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-958.62,0.0,2017
+77,2,Out,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,-2142.0,0.0,2017
+78,2,Out,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,10448.0,30424.96,2017
+79,2,Out,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,1542.0,0.0,2017
+80,2,Out,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,823.0,0.0,2017
+81,2,Out,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,68.21000000000001,118362.68999999999,2017
+82,2,Out,0,Convenience market,"STORES, ONE STORY",Commercial/Retail,sq. ft.,-763.0,0.0,2017
+83,2,Out,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,4815.0,106525.12,2017
+84,2,Out,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,7172.0,0.0,2017
+85,2,Out,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,32.0,5131.09,2017
+86,2,Out,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,216.0,38920.18,2017
+87,2,Out,0,Fast Food Rest. w/ Drive-Thru,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,484.0,21578.99,2017
+88,2,Out,0,Fast Food Rest. w/o Drive-Thru,"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,810.0,0.0,2017
+89,2,Out,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,89063.6,740145.17,2017
+90,2,Out,0,"General Office Building [400,001-500,000]","OFFICE, MULTI-STORY",Office,sq. ft.,-57180.0,0.0,2017
+91,2,Out,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,3542.0,404721.12,2017
+92,2,Out,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,297.0,0.0,2017
+93,2,Out,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1068.0,150086.8,2017
+94,2,Out,0,Hospital,HOSPITALS,Other,sq. ft.,0.0,0.0,2017
+95,2,Out,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,446.0,3143166.09,2017
+96,2,Out,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,28.0,0.0,2017
+97,2,Out,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,12933.0,0.0,2017
+98,2,Out,0,Mini-Warehouse,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,514422.0,0.0,2017
+99,2,Out,0,Mobile Home,MOBILE HOME,Single-family,unit,-73.0,0.0,2017
+100,2,Out,0,Motel,"HOTELS, MOTELS",Commercial/Retail,room,0.0,0.0,2017
+101,2,Out,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,-12.0,0.0,2017
+102,2,Out,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-12131.439999999999,3437847.93,2017
+103,2,Out,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,-6099.0,381048.01,2017
+104,2,Out,0,"Shopping Center/General Retail [200,001-300,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,0.0,0.0,2017
+105,2,Out,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,11.52,658566.8,2017
+106,2,Out,0,Tire Stores,REPAIR SERVICE SHOPS,Commercial/Retail,sq. ft.,-6611.0,0.0,2017
+107,2,Out,0,Truck Terminals,SERVICE STATIONS,Commercial/Retail,sq. ft.,3594.0,31813.01,2017
+108,2,Out,0,University (20 SF/St),COLLEGES,Other,student,390.0,350125.24,2017
+109,2,Out,0,Unknown*,Unknown,Unknown,0,-232.43,0.0,2017
+110,2,Out,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,379160.99,3088595.47,2017
+111,3,In,0,All Suites Hotel,"HOTELS, MOTELS",Commercial/Retail,room,116.0,649088.44,2017
+112,3,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,44.6,184017.05000000002,2017
+113,3,In,0,Bank (Drive-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-41833.0,0.0,2017
+114,3,In,0,Bank (Walk-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,8179.0,178354.64,2017
+115,3,In,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,62170.0,2737658.83,2017
+116,3,In,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,149312.0,675082.22,2017
+117,3,In,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,11896.0,154830.45,2017
+118,3,In,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,6744.0,0.0,2017
+119,3,In,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,2970.0,0.0,2017
+120,3,In,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,17.0,35876.630000000005,2017
+121,3,In,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,3321.0,189134.53,2017
+122,3,In,0,Discount Superestore (Free standing),"WHOLESALE, PRODUCE, MFG",Commercial/Retail,sq. ft.,154397.0,54744.03,2017
+123,3,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,122.0,662032.7499999999,2017
+124,3,In,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,94.0,17942.25,2017
+125,3,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,70416.0,1940928.1700000002,2017
+126,3,In,0,"General Office Building [100,001-150,000]",PROFESSIONAL BUILDING,Office,sq. ft.,214020.0,0.0,2017
+127,3,In,0,"General Office Building [200,001-300,000]","OFFICE, MULTI-STORY",Office,sq. ft.,-1294.0,0.0,2017
+128,3,In,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,159771.81,983396.71,2017
+129,3,In,0,Health/Fitness,OUTDOOR RECREATIONAL,Other,sq. ft.,37049.0,142712.75,2017
+130,3,In,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,32387.0,1538879.0499999998,2017
+131,3,In,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1195.0,396303.92,2017
+132,3,In,0,Hospital,HOSPITALS,Other,sq. ft.,86900.0,1361166.84,2017
+133,3,In,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,192.0,1546079.07,2017
+134,3,In,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,3000.0,10736.4,2017
+135,3,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,12881.0,6261.11,2017
+136,3,In,0,Multipurpose Recreational,OUTDOOR RECREATIONAL,Other,acre,5.2,1000.0,2017
+137,3,In,0,Nursing Home,"SANITARIUM, CONVALESCENT & REST HOME",Other,bed,60.0,126726.6,2017
+138,3,In,0,Pharmacy/Drugstore w/ Drive-Thru,"STORES, ONE STORY",Commercial/Retail,sq. ft.,15446.0,0.0,2017
+139,3,In,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,18.0,3742.37,2017
+140,3,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,52467.0,4219753.38,2017
+141,3,In,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,86636.0,186296.37,2017
+142,3,In,0,"Shopping Center/General Retail [200,001-300,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,39214.0,650459.34,2017
+143,3,In,0,"Shopping Center/General Retail [300,001-400,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,734.0,17619.08,2017
+144,3,In,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,40301.0,504017.2,2017
+145,3,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,25.35,483290.1799999999,2017
+146,3,In,0,Supermarket (free standing),SUPERMARKETS,Commercial/Retail,sq. ft.,-32445.0,0.0,2017
+147,3,In,0,University (20 SF/St),COLLEGES,Other,student,36.0,0.0,2017
+148,3,In,0,Unknown*,Unknown,Unknown,0,-701461.6,0.0,2017
+149,3,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,711699.0,2697205.6400000006,2017
+150,3,Out,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,825.0,2643167.830000001,2017
+151,3,Out,0,Assisted Living Facility,HOMES FOR THE AGED,Other,bed,0.0,0.0,2017
+152,3,Out,0,Bank (Drive-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-1338.38,76282.22,2017
+153,3,Out,0,Bank (Walk-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-11417.88,0.0,2017
+154,3,Out,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,6745.0,62088.35,2017
+155,3,Out,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,47351.0,246174.85,2017
+156,3,Out,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,95602.0,18761.23,2017
+157,3,Out,0,Clinic,PROFESSIONAL BUILDING,Office,sq. ft.,31601.0,0.0,2017
+158,3,Out,0,Coffee/Donut Shop,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,5622.0,0.0,2017
+159,3,Out,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,30.0,31856.500000000004,2017
+160,3,Out,0,Convenience market with Gasoline,SERVICE STATIONS,Commercial/Retail,sq. ft.,17497.0,1042005.8600000001,2017
+161,3,Out,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,23160.0,0.0,2017
+162,3,Out,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,619.0,2591871.3100000015,2017
+163,3,Out,0,Fast Food Rest. w/ Drive-Thru,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,5978.0,153200.75,2017
+164,3,Out,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,245584.51,2782704.37,2017
+165,3,Out,0,"General Office Building [50,001 -100,000]","OFFICE, ONE STORY",Office,sq. ft.,108274.2,1530808.5499999998,2017
+166,3,Out,0,Health/Fitness,OUTDOOR RECREATIONAL,Other,sq. ft.,-15250.0,0.0,2017
+167,3,Out,0,High School (25 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,639.0,664437.31,2017
+168,3,Out,0,High Turnover Rest.,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,-1708.0,82779.91,2017
+169,3,Out,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,234.0,0.0,2017
+170,3,Out,0,High-Rise Apart or Condo over 3 floors,MULTI-FAMILY 10 OR MORE,Multifamily,unit,1154.0,2897436.33,2017
+171,3,Out,0,Hospital,HOSPITALS,Other,sq. ft.,82543.0,1174603.4,2017
+172,3,Out,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,245.0,2058867.1999999997,2017
+173,3,Out,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,113.0,36651.76,2017
+174,3,Out,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,-705.0,2150.86,2017
+175,3,Out,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,28093.0,2522.72,2017
+176,3,Out,0,Nursing Home,"SANITARIUM, CONVALESCENT & REST HOME",Other,bed,9.0,19008.99,2017
+177,3,Out,0,Senior Adult Housing-Attached,HOMES FOR THE AGED,Other,unit,92.0,288438.35,2017
+178,3,Out,0,Service Stations w/ Gasoline,SERVICE STATIONS,Commercial/Retail,fuel station,1.0,123363.47,2017
+179,3,Out,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,10834.31,1871738.0900000003,2017
+180,3,Out,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,105819.0,1001500.5100000001,2017
+181,3,Out,0,"Shopping Center/General Retail [100,001-200,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,4425.0,83180.26,2017
+182,3,Out,0,"Shopping Center/General Retail [200,001-300,000]",COMMUNITY SHOPPING CENTER,Commercial/Retail,sq. ft.,3552.0,61932.67,2017
+183,3,Out,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,76576.0,116754.88,2017
+184,3,Out,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,491.3399999999999,4177662.1599999825,2017
+185,3,Out,0,Supermarket (free standing),SUPERMARKETS,Commercial/Retail,sq. ft.,19518.0,358102.6,2017
+186,3,Out,0,Tire Stores,REPAIR SERVICE SHOPS,Commercial/Retail,sq. ft.,476.0,0.0,2017
+187,3,Out,0,Unknown*,Unknown,Unknown,0,-4.44,0.0,2017
+188,3,Out,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,3060872.0,16676249.140000008,2017
+189,4,In,0,Apartment (Rentals),MULTI-FAMILY 10 OR MORE,Multifamily,unit,693.0,3264361.2100000014,2017
+190,4,In,0,Assisted Living Facility,HOMES FOR THE AGED,Other,bed,0.0,0.0,2017
+191,4,In,0,Bank (Drive-in),"RESTAURANTS, CAFETERIAS",Commercial/Retail,sq. ft.,-3759.0,0.0,2017
+192,4,In,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,833.0,0.0,2017
+193,4,In,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,9299.25,44242.939999999995,2017
+194,4,In,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,22.0,94757.48,2017
+195,4,In,0,Convenience market,"STORES, ONE STORY",Commercial/Retail,sq. ft.,966.0,35941.13,2017
+196,4,In,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,-5206.0,0.0,2017
+197,4,In,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,63.0,292153.75999999995,2017
+198,4,In,0,Fast Food Rest. w/ Drive-Thru,DRIVE-IN RESTAURANTS,Commercial/Retail,sq. ft.,2392.0,116608.8,2017
+199,4,In,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,5531.0,10721.18,2017
+200,4,In,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,66.0,0.0,2017
+201,4,In,0,Manufacturing,HEAVY INDUSTRIAL,Industrial/Manufacturing,sq. ft.,4293.0,15363.79,2017
+202,4,In,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,567.0,0.0,2017
+203,4,In,0,Mobile Home,MOBILE HOME,Single-family,unit,-186.66,0.0,2017
+204,4,In,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,234.5,873606.01,2017
+205,4,In,0,"Shopping Center/General Retail [50,001 -100,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,117868.0,143494.13999999998,2017
+206,4,In,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,23.530000000000015,297280.59,2017
+207,4,In,0,Unknown*,Unknown,Unknown,0,-1.37,0.0,2017
+208,4,In,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,-687.0,16746.4,2017
+209,4,Out,0,Car Sales (New & Used Car Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,18026.0,910469.49,2017
+210,4,Out,0,Car Sales (Service and Parts Sales Area),"AUTO SALES, REPAIR, ETC",Commercial/Retail,sq. ft.,34891.0,0.0,2017
+211,4,Out,0,Church/Synagogue,"CHURCHES, TEMPLES",Other,sq. ft.,0.0,0.0,2017
+212,4,Out,0,"Condominium,Townhouse",CONDOMINIUM,Single-family,unit,8.0,32559.0,2017
+213,4,Out,0,Day Care Center,PRIVATE SCHOOLS & COLLEGES,Other,sq. ft.,4457.0,0.0,2017
+214,4,Out,0,Duplex,MULTI-FAMILY LESS THAN 10,Multifamily,unit,433.0,2318373.4099999997,2017
+215,4,Out,0,Elementary School (30 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,510.0,0.0,2017
+216,4,Out,0,"General Office Building [1-50,000]","OFFICE, ONE STORY",Office,sq. ft.,10781.0,123566.6,2017
+217,4,Out,0,High School (25 SF/St),PUBLIC COUNTY SCHOOLS,Other,student,930.0,0.0,2017
+218,4,Out,0,High turnover Rest/Seats,"RESTAURANTS, CAFETERIAS",Commercial/Retail,seats,16.0,0.0,2017
+219,4,Out,0,Hotel,"HOTELS, MOTELS",Commercial/Retail,room,100.0,331192.06,2017
+220,4,Out,0,Jr./Community College (25 SF/St),COLLEGES,Other,student,153.0,0.0,2017
+221,4,Out,0,Medical Office Building,PROFESSIONAL BUILDING,Office,sq. ft.,1674.0,0.0,2017
+222,4,Out,0,Mini-Warehouse,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,52301.0,121312.17,2017
+223,4,Out,0,"Shopping Center/General Retail [1-10,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,10576.0,292698.39,2017
+224,4,Out,0,"Shopping Center/General Retail [10,001 -50,000]","STORES, ONE STORY",Commercial/Retail,sq. ft.,25004.0,328682.52,2017
+225,4,Out,0,Single Family Detached,SINGLE FAMILY RESIDENTIAL,Single-family,unit,724.0,7691052.890000103,2017
+226,4,Out,0,Tennis Courts,OUTDOOR RECREATIONAL,Other,court,1.0,0.0,2017
+227,4,Out,0,Unknown*,Unknown,Unknown,0,-23124.49,0.0,2017
+228,4,Out,0,Warehousing,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial/Manufacturing,sq. ft.,125246.0,569775.05,2017

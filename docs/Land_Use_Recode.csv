@@ -1,0 +1,105 @@
+DOR_UC,SPC_LU,GEN_LU,GN_VA_LU,DIV_CLASS,NRES_ENERGY,RES_NRES
+0,VACANT RESIDENTIAL,Residential,Vacant/Undeveloped,vacant,NA,RES
+1,SINGLE FAMILY RESIDENTIAL,Residential,Single-family,sf,NA,RES
+2,MOBILE HOME,Residential,Single-family,sf,NA,RES
+3,MULTI-FAMILY 10 OR MORE,Residential,Multifamily,mf,NA,RES
+4,CONDOMINIUM,Residential,Single-family,sf,NA,RES
+5,COOPERATIVES,Residential,Multifamily,mf,NA,RES
+6,RETIREMENT HOMES,Residential,Multifamily,mf,NA,RES
+7,MISCELLANEOUS RESIDENTIAL,Residential,Multifamily,mf,NA,RES
+8,MULTI-FAMILY LESS THAN 10,Residential,Multifamily,mf,NA,RES
+9,RESIDENTIAL COMMON ELEMENTS/AREAS,Residential,Other,other,NA,RES
+10,VACANT COMMERCIAL,Commercial,Vacant/Undeveloped,vacant,NA,NRES
+11,"STORES, ONE STORY",Commercial,Commercial/Retail,shopping,Retail store ,NRES
+12,"COMMERCIAL, MIXED USE",Commercial,Commercial/Retail,shopping,Strip shopping center ,NRES
+13,DEPARTMENT STORE,Commercial,Commercial/Retail,shopping,Retail store ,NRES
+14,SUPERMARKETS,Commercial,Commercial/Retail,grocery,Grocery store or food market ,NRES
+15,REGIONAL SHOPPING CENTER,Commercial,Commercial/Retail,shopping,Enclosed mall ,NRES
+16,COMMUNITY SHOPPING CENTER,Commercial,Commercial/Retail,shopping,Strip shopping center ,NRES
+17,"OFFICE, ONE STORY",Commercial,Office,office,Administrative or professional,NRES
+18,"OFFICE, MULTI-STORY",Commercial,Office,office,Administrative or professional,NRES
+19,PROFESSIONAL BUILDING,Commercial,Office,office,Administrative or professional,NRES
+20,"AIRPORTS, TERMINALS, PIERS",Commercial,Other,other,,NRES
+21,"RESTAURANTS, CAFETERIAS",Commercial,Commercial/Retail,restaurant,Restaurant or cafeteria ,NRES
+22,DRIVE-IN RESTAURANTS,Commercial,Commercial/Retail,restaurant,Fast food ,NRES
+23,FINANCIAL INSTITUTIONS,Commercial,Office,office,Bank or other financial ,NRES
+24,INSURANCE COMPANY OFFICES,Commercial,Office,office,Bank or other financial ,NRES
+25,REPAIR SERVICE SHOPS,Commercial,Commercial/Retail,auto,Repair shop ,NRES
+26,SERVICE STATIONS,Commercial,Commercial/Retail,auto,Vehicle service or repair ,NRES
+27,"AUTO SALES, REPAIR, ETC",Commercial,Commercial/Retail,auto,Vehicle dealership ,NRES
+28,"PARKING LOTS, MH PARKS, ETC",Commercial,Commercial/Retail,auto,NA,NRES
+29,"WHOLESALE, PRODUCE, MFG",Commercial,Commercial/Retail,shopping,Distribution or shipping center,NRES
+30,"FLORISTS, GREENHOUSES",Commercial,Commercial/Retail,shopping,Warehouse and storage ,NRES
+31,"DRIVE-IN THEATER, OPEN STADIUM",Commercial,Commercial/Retail,entertainment,Other assembly ,NRES
+32,ENCLOSED THEATER/AUDITORIUM,Commercial,Commercial/Retail,entertainment,Entertainment or culture,NRES
+33,"NIGHT CLUBS, LOUNGES, BARS",Commercial,Commercial/Retail,entertainment,"Bar, pub, or lounge",NRES
+34,"BOWLING ALLEYS, RINKS, ARENAS",Commercial,Commercial/Retail,entertainment,Entertainment or culture,NRES
+35,TOURIST ATTRACTIONS,Commercial,Other,entertainment,Recreation ,NRES
+36,CAMPS,Commercial,Other,other,NA,NRES
+37,RACE TRACKS,Commercial,Other,entertainment,Other assembly ,NRES
+38,"GOLF COURSE, DRIVING RANGE",Commercial,Other,entertainment,NA,NRES
+39,"HOTELS, MOTELS",Commercial,Commercial/Retail,lodging,Hotel ,NRES
+40,VACANT INDUSTRIAL,Industrial,Vacant/Undeveloped,vacant,Warehouse and storage ,NRES
+41,LIGHT MANUFACTURING,Industrial,Industrial/Manufacturing,industrial,Distribution or shipping center,NRES
+42,HEAVY INDUSTRIAL,Industrial,Industrial/Manufacturing,industrial,Distribution or shipping center,NRES
+43,"LUMBER YARDS, SAWMILLS",Industrial,Industrial/Manufacturing,industrial,Warehouse and storage ,NRES
+44,PACKING PLANTS,Industrial,Industrial/Manufacturing,industrial,Refrigerated ,NRES
+45,"CANNERY, BREWERY, WINERY",Industrial,Industrial/Manufacturing,industrial,Refrigerated ,NRES
+46,OTHER FOOD PROCESSING,Industrial,Industrial/Manufacturing,industrial,Refrigerated ,NRES
+47,MINERAL PROCESSING,Industrial,Industrial/Manufacturing,industrial,Warehouse and storage ,NRES
+48,"WAREHOUSING, DISTRIBUTION TERMINALS",Industrial,Industrial/Manufacturing,industrial,Distribution or shipping center,NRES
+49,OPEN STORAGE,Industrial,Industrial/Manufacturing,industrial,Warehouse,NRES
+50,IMPROVED AGRICULTURAL,Agricultural,Other,ag,NA,NRES
+51,CROPLAND CLASS I,Agricultural,Other,ag,NA,NRES
+52,CROPLAND CLASS II,Agricultural,Other,ag,NA,NRES
+53,CROPLAND CLASS III,Agricultural,Other,ag,NA,NRES
+54,TIMBERLAND INDEX 90+,Agricultural,Other,ag,NA,NRES
+55,TIMBERLAND INDEX 80-89,Agricultural,Other,ag,NA,NRES
+56,TIMBERLAND INDEX 70-79,Agricultural,Other,ag,NA,NRES
+57,TIMBERLAND INDEX 60-69,Agricultural,Other,ag,NA,NRES
+58,TIMBERLAND INDEX 50-59,Agricultural,Other,ag,NA,NRES
+59,TIMBERLAND NOT CLASSIFIED,Agricultural,Other,ag,NA,NRES
+60,GRAZING LAND CLASS I,Agricultural,Other,ag,NA,NRES
+61,GRAZING LAND CLASS II,Agricultural,Other,ag,NA,NRES
+62,GRAZING LAND CLASS III,Agricultural,Other,ag,NA,NRES
+63,GRAZING LAND CLASS IV,Agricultural,Other,ag,NA,NRES
+64,GRAZING LAND CLASS V,Agricultural,Other,ag,NA,NRES
+65,GRAZING LAND CLASS VI,Agricultural,Other,ag,NA,NRES
+66,"ORCHARD GROVES, CITRUS, ETC",Agricultural,Other,ag,NA,NRES
+67,"POULTRY, BEES, TROPICAL FISH, RABBITS",Agricultural,Other,ag,NA,NRES
+68,"DAIRIES, FEED LOTS",Agricultural,Other,ag,NA,NRES
+69,"ORNAMENTALS, MISCELLANEOUS AG",Agricultural,Other,ag,NA,NRES
+70,VACANT INSTITUTIONAL,Institutional,Vacant/Undeveloped,vacant,Public assembly ,NRES
+71,"CHURCHES, TEMPLES",Institutional,Other,misc,Religious worship ,NRES
+72,PRIVATE SCHOOLS & COLLEGES,Institutional,Other,education,College or university ,NRES
+73,PRIVATELY OWNED HOSPITALS,Institutional,Other,healthcare,Inpatient ,NRES
+74,HOMES FOR THE AGED,Institutional,Other,misc,Nursing home or assisted living,NRES
+75,"ORPHANAGES, NON-PROFIT SERVICE",Institutional,Other,misc,Other lodging ,NRES
+76,"MORTUARY, CEMETERY, CREMATORIUM",Institutional,Other,misc,Other ,NRES
+77,"CLUBS, LODGES, UNION HALLS",Institutional,Other,misc,Social or meeting ,NRES
+78,"SANITARIUM, CONVALESCENT & REST HOME",Institutional,Other,misc,Nursing home or assisted living,NRES
+79,"CULTURAL ORG, FACILITIES",Institutional,Other,misc,Entertainment or culture,NRES
+80,VACANT GOVERNMENTAL,Governmental,Vacant/Undeveloped,vacant,Other public order ,NRES
+81,MILITARY,Governmental,Other,other,NA,NRES
+82,"FOREST, PARKS, RECREATIONAL",Governmental,Other,other,NA,NRES
+83,PUBLIC COUNTY SCHOOLS,Governmental,Other,education,K-12 ,NRES
+84,COLLEGES,Governmental,Other,education,College or university ,NRES
+85,HOSPITALS,Governmental,Other,healthcare,Inpatient ,NRES
+86,COUNTIES - OTHER,Governmental,Other,civic,Other public order ,NRES
+87,STATE - OTHER,Governmental,Other,civic,Other public order ,NRES
+88,FEDERAL - OTHER,Governmental,Other,civic,Other public order ,NRES
+89,MUNICIPAL - OTHER,Governmental,Other,civic,Other public order ,NRES
+90,LEASEHOLD INTERESTS,Miscellaneous,Other,other,Other ,NRES
+91,UTILITY,Miscellaneous,Other,other,Other ,NRES
+92,"MINING, PETROLEUM, GAS LANDS",Miscellaneous,Other,other,NA,NRES
+93,SUBSURFACE RIGHTS,Miscellaneous,Other,other,NA,NRES
+94,RIGHT-OF-WAY,Miscellaneous,Other,other,NA,NRES
+95,"RIVERS, LAKES, SUBMERGED LAND",Miscellaneous,Other,other,NA,NRES
+96,"SEWAGE DISPOSAL, WASTE LANDS",Miscellaneous,Other,other,NA,NRES
+97,OUTDOOR RECREATIONAL,Miscellaneous,Other,other,NA,NRES
+98,CENTRALLY ASSESSED,Centrally Assessed,Other,other,NA,NRES
+99,ACREAGE NOT AG CLASSIFIED,Non Agricultural,Other,other,NA,NRES
+100,NON CLASSIFIED RESIDENTIAL,Residential,Other,other,NA,RES
+101,NON CLASSIFIED RESIDENTIAL,Residential,Other,other,NA,RES
+102,NON CLASSIFIED RESIDENTIAL,Residential,Other,other,NA,RES
+999,NA,NA,NA,other,NA,NRES

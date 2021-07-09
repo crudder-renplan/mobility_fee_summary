@@ -1,0 +1,26 @@
+﻿COLUMN,DEFINITION,NOTES
+DIST_ID,District Identifier,
+PROC_NUM,Process number,"Leading C, M or B; followed by year of permit and unknown code,
+-	C number represents a project located in Unincorporated Dade County
+-	M number represents a project located in a municipality 
+-	B number represents a project located in a municipality
+- is there a meaning to the code following the year?"
+FOLIO,"unique id, correlates directly to the parcel id/no",
+SITE_ADDR,address of the parcel permit has been taken out on,
+CONF_FLAG,"Exempt from Public Records 119.071 Florida Statues,  [Y: Exempt,  N: No Exempt, Blank: No info]",
+FEE_PAYER,"entity paying RIF, likley correlates to permit holder",
+PAID_DATE,date fee was paid,
+FEE_CODE,fee code,"all set to 'ROAD', may be irrelevant"
+STATUS_CODE,"status code, all set to `C`","Credit, Collected, Assessesd --> 
+- Credit means the project is not started but credit has been applied
+- collected means project is underway
+- assessed means proposed project has been assessed for fee, but may not happen"
+CON_AMT,construction project cost ???,combined with ADM_AMT we have  project cost
+ADM_AMT,administrative cost ???,combined with CON_AMT we have  project cost
+CRED_AMT,cost credits applied ???,not important for our work
+DEF_AMT,defered costs ???,not important for our work
+DEF_ADMIN,defered admin costs ???,not important for our work
+CAT_CODE,category code of development project,see category code table
+UNITS,numerical value of units for the particular coded project ,"varies from sqft, rooms, students, etc, 
+- is there a generalized conversion to sqft we can assume for non-sqft units?
+Ie: 1 key = 500 sqft, "
