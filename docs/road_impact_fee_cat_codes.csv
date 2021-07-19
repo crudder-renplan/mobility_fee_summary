@@ -1,89 +1,89 @@
-CAT_CODE,LAND USE,UNITS
-30-00,Truck Terminals,sq. ft.
-130-00,Industrial Park,sq. ft.
-140-00,Manufacturing,sq. ft.
-150-00,Warehousing,sq. ft.
-151-00,Mini-Warehouse,sq. ft.
-210-00,Single Family Detached,unit
-220-00,Apartment (Rentals),unit
-222-00,High-Rise Apart or Condo over 3 floors,unit
-230-00,"Condominium,Townhouse",unit
-231-00,Duplex,unit
-240-00,Mobile Home,unit
-251-00,Senior Adult Housing-Detached,unit
-252-00,Senior Adult Housing-Attached,unit
-253-00,Congregate Care Facility,unit
-254-00,Assisted Living Facility,bed
-255-00,Continuing Care Retirement Community,unit
-311-00,All Suites Hotel,room
-310-00,Hotel,room
-320-00,Motel,room
-420-00,Marina,berth
-430-00,Golf Course,hole
-435-00,Multipurpose Recreational,acre
-444-00,Movie Theater,screen
-480-00,Amusement Park,acre
-490-00,Tennis Courts,court
-491-00,Racquet Club,court
-492-00,Health/Fitness,sq. ft.
-520-00,Elementary School (30 SF/St),student
-530-00,High School (25 SF/St),student
-540-00,Jr./Community College (25 SF/St),student
-550-00,University (20 SF/St),student
-560-00,Church/Synagogue,sq. ft.
-565-00,Day Care Center,sq. ft.
-610-00,Hospital,sq. ft.
-620-00,Nursing Home,bed
-630-00,Clinic,sq. ft.
-710-00,General Office Building,sq. ft.
-710-00,"General Office Building [1-50,000]",sq. ft.
-710-01,"General Office Building [50,001 -100,000]",sq. ft.
-710-02,"General Office Building [100,001-150,000]",sq. ft.
-710-03,"General Office Building [150,001-200,000]",sq. ft.
-710-04,"General Office Building [200,001-300,000]",sq. ft.
-710-05,"General Office Building [300,001-400,000]",sq. ft.
-710-06,"General Office Building [400,001-500,000]",sq. ft.
-710-07,"General Office Building [500,001-600,000]",sq. ft.
-710-08,"General Office Building [600,001-700,000]",sq. ft.
-710-09,"General Office Building [700,001-more]",sq. ft.
-720-00,Medical Office Building,sq. ft.
-750-00,Office Park,sq. ft.
-760-00,Research Center,sq. ft.
-770-00,Business Park,sq. ft.
-813-00,Discount Superestore (Free standing),sq. ft.
-816-00,Hardware/Paint Store/Pool Suply,sq. ft.
-817-00,Nursery Garden Center,sq. ft.
-820-00,Shopping Center/General Retail,sq. ft.
-820-00,"Shopping Center/General Retail [1-10,000]",sq. ft.
-820-01,"Shopping Center/General Retail [10,001 -50,000]",sq. ft.
-820-02,"Shopping Center/General Retail [50,001 -100,000]",sq. ft.
-820-03,"Shopping Center/General Retail [100,001-200,000]",sq. ft.
-820-04,"Shopping Center/General Retail [200,001-300,000]",sq. ft.
-820-05,"Shopping Center/General Retail [300,001-400,000]",sq. ft.
-820-06,"Shopping Center/General Retail [400,001-500,000]",sq. ft.
-820-07,"Shopping Center/General Retail [500,001-600,000]",sq. ft.
-820-08,"Shopping Center/General Retail [600,001-800,000]",sq. ft.
-820-09,"Shopping Center/General Retail [800,001-1,000,000]",sq. ft.
-820-10,"Shopping Center/General Retail [1,000,001-1,200,000]",sq. ft.
-820-11,"Shopping Center/General Retail [1,200,001-more]",sq. ft.
-841-00,Car Sales (New & Used Car Sales Area),sq. ft.
-841-01,Car Sales (Service and Parts Sales Area),sq. ft.
-848-00,Tire Stores,sq. ft.
-850-00,Supermarket (free standing),sq. ft.
-851-00,Convenience market,sq. ft.
-853-00,Convenience market with Gasoline,sq. ft.
-862-00,Home Improvements Superstore,sq. ft.
-875-00,Department Store (free standing),sq. ft.
-880-00,Pharmacy/Drugstore w/o Drive-Thru,sq. ft.
-881-00,Pharmacy/Drugstore w/ Drive-Thru,sq. ft.
-890-00,Furniture Store (free standing),sq. ft.
-911-00,Bank (Walk-in),sq. ft.
-912-00,Bank (Drive-in),sq. ft.
-931-00,Quality Restaurant,sq. ft.
-931-01,Quality Restaurant/Seats,seats
-932-00,High Turnover Rest.,sq. ft.
-932-01,High turnover Rest/Seats,seats
-933-00,Fast Food Rest. w/o Drive-Thru,sq. ft.
-934-00,Fast Food Rest. w/ Drive-Thru,sq. ft.
-937-00,Coffee/Donut Shop,sq. ft.
-944-00,Service Stations w/ Gasoline,pump
+CAT_CODE,LANDUSE,UNITS,DOR_UC
+130-00,Industrial Park,sq. ft.,41
+140-00,Manufacturing,sq. ft.,42
+150-00,Warehousing,sq. ft.,48
+151-00,Mini-Warehouse,sq. ft.,48
+210-00,Single Family Detached,unit,1
+220-00,Apartment (Rentals),unit,3
+222-00,High-Rise Apart or Condo over 3 floors,unit,3
+230-00,"Condominium,Townhouse",unit,4
+231-00,Duplex,unit,8
+240-00,Mobile Home,unit,2
+251-00,Senior Adult Housing-Detached,unit,1
+252-00,Senior Adult Housing-Attached,unit,74
+253-00,Congregate Care Facility,unit,78
+254-00,Assisted Living Facility,bed,74
+255-00,Continuing Care Retirement Community,unit,74
+30-00,Truck Terminals,sq. ft.,26
+310-00,Hotel,room,39
+311-00,All Suites Hotel,room,39
+320-00,Motel,room,39
+420-00,Marina,berth,20
+430-00,Golf Course,hole,38
+435-00,Multipurpose Recreational,acre,97
+444-00,Movie Theater,screen,32
+480-00,Amusement Park,acre,35
+490-00,Tennis Courts,court,97
+491-00,Racquet Club,court,97
+492-00,Health/Fitness,sq. ft.,97
+520-00,Elementary School (30 SF/St),student,83
+530-00,High School (25 SF/St),student,83
+540-00,Jr./Community College (25 SF/St),student,84
+550-00,University (20 SF/St),student,84
+560-00,Church/Synagogue,sq. ft.,71
+565-00,Day Care Center,sq. ft.,72
+610-00,Hospital,sq. ft.,85
+620-00,Nursing Home,bed,78
+630-00,Clinic,sq. ft.,19
+710-00,"General Office Building [1-50,000]",sq. ft.,17
+710-01,"General Office Building [50,001 -100,000]",sq. ft.,17
+710-02,"General Office Building [100,001-150,000]",sq. ft.,19
+710-03,"General Office Building [150,001-200,000]",sq. ft.,19
+710-04,"General Office Building [200,001-300,000]",sq. ft.,18
+710-05,"General Office Building [300,001-400,000]",sq. ft.,18
+710-06,"General Office Building [400,001-500,000]",sq. ft.,18
+710-07,"General Office Building [500,001-600,000]",sq. ft.,18
+710-08,"General Office Building [600,001-700,000]",sq. ft.,18
+710-09,"General Office Building [700,001-more]",sq. ft.,18
+720-00,Medical Office Building,sq. ft.,19
+750-00,Office Park,sq. ft.,18
+760-00,Research Center,sq. ft.,19
+770-00,Business Park,sq. ft.,19
+813-00,Discount Superestore (Free standing),sq. ft.,29
+816-00,Hardware/Paint Store/Pool Suply,sq. ft.,11
+817-00,Nursery Garden Center,sq. ft.,30
+820-00,"Shopping Center/General Retail [1-10,000]",sq. ft.,11
+820-01,"Shopping Center/General Retail [10,001 -50,000]",sq. ft.,11
+820-02,"Shopping Center/General Retail [50,001 -100,000]",sq. ft.,11
+820-03,"Shopping Center/General Retail [100,001-200,000]",sq. ft.,16
+820-04,"Shopping Center/General Retail [200,001-300,000]",sq. ft.,16
+820-05,"Shopping Center/General Retail [300,001-400,000]",sq. ft.,16
+820-06,"Shopping Center/General Retail [400,001-500,000]",sq. ft.,16
+820-07,"Shopping Center/General Retail [500,001-600,000]",sq. ft.,15
+820-08,"Shopping Center/General Retail [600,001-800,000]",sq. ft.,15
+820-09,"Shopping Center/General Retail [800,001-1,000,000]",sq. ft.,15
+820-10,"Shopping Center/General Retail [1,000,001-1,200,000]",sq. ft.,15
+820-11,"Shopping Center/General Retail [1,200,001-more]",sq. ft.,15
+832-00,High-Turnover Restaurant,sq. ft.,22
+841-00,Car Sales (New & Used Car Sales Area),sq. ft.,27
+841-01,Car Sales (Service and Parts Sales Area),sq. ft.,27
+848-00,Tire Stores,sq. ft.,25
+850-00,Supermarket (free standing),sq. ft.,14
+851-00,Convenience market,sq. ft.,11
+853-00,Convenience market with Gasoline,sq. ft.,26
+862-00,Home Improvements Superstore,sq. ft.,29
+875-00,Department Store (free standing),sq. ft.,13
+880-00,Pharmacy/Drugstore w/o Drive-Thru,sq. ft.,11
+881-00,Pharmacy/Drugstore w/ Drive-Thru,sq. ft.,11
+890-00,Furniture Store (free standing),sq. ft.,29
+911-00,Bank (Walk-in),sq. ft.,21
+912-00,Bank (Drive-in),sq. ft.,21
+931-00,Quality Restaurant,sq. ft.,21
+931-01,Quality Restaurant/Seats,seats,21
+932-00,High Turnover Rest.,sq. ft.,22
+932-01,High turnover Rest/Seats,seats,21
+933-00,Fast Food Rest. w/o Drive-Thru,sq. ft.,21
+934-00,Fast Food Rest. w/ Drive-Thru,sq. ft.,22
+937-00,Coffee/Donut Shop,sq. ft.,22
+944-00,Service Stations w/ Gasoline,fuel station,26
+9999-00,Unknown*,unknown,999

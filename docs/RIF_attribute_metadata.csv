@@ -1,26 +1,84 @@
-﻿COLUMN,DEFINITION,NOTES
-DIST_ID,District Identifier,
-PROC_NUM,Process number,"Leading C, M or B; followed by year of permit and unknown code,
--	C number represents a project located in Unincorporated Dade County
--	M number represents a project located in a municipality 
--	B number represents a project located in a municipality
-- is there a meaning to the code following the year?"
-FOLIO,"unique id, correlates directly to the parcel id/no",
-SITE_ADDR,address of the parcel permit has been taken out on,
-CONF_FLAG,"Exempt from Public Records 119.071 Florida Statues,  [Y: Exempt,  N: No Exempt, Blank: No info]",
-FEE_PAYER,"entity paying RIF, likley correlates to permit holder",
-PAID_DATE,date fee was paid,
-FEE_CODE,fee code,"all set to 'ROAD', may be irrelevant"
-STATUS_CODE,"status code, all set to `C`","Credit, Collected, Assessesd --> 
-- Credit means the project is not started but credit has been applied
-- collected means project is underway
-- assessed means proposed project has been assessed for fee, but may not happen"
-CON_AMT,construction project cost ???,combined with ADM_AMT we have  project cost
-ADM_AMT,administrative cost ???,combined with CON_AMT we have  project cost
-CRED_AMT,cost credits applied ???,not important for our work
-DEF_AMT,defered costs ???,not important for our work
-DEF_ADMIN,defered admin costs ???,not important for our work
-CAT_CODE,category code of development project,see category code table
-UNITS,numerical value of units for the particular coded project ,"varies from sqft, rooms, students, etc, 
-- is there a generalized conversion to sqft we can assume for non-sqft units?
-Ie: 1 key = 500 sqft, "
+﻿CODE,LU,Trip Generation ,Trip Length ,Impact Fee 
+30 -00,Truck Terminals ,"9.85/1,000 GSF 4 ",6.25 ,"6,338 "
+130 -00,Industrial Park ,"6.96/1,000 GSF ",6.16 ,"4,414 "
+140 -00,Manufacturing ,"3.82/1,000 GSF ",6.16 ,"2,423 "
+150 -00,Warehousing ,"4.96/1,000 GSF ",6.16 ,"3,146 "
+151 -00,Mini-Warehouse ,"2.50/1,000 GSF ",5.90 ,"1,519 "
+210 -00,Single-Family Detached ,9.57/unit ,6.09 ,"6,001 "
+220 -00,Apartment (Rentals) ,6.72/unit ,6.09 ,"4,214 "
+222 -00,High-Rise Apartment or Condominium (more than three floors) ,4.20/unit ,6.09 ,"2,634 "
+230 -00,"Condominium, Townhouse ",5.86/unit ,6.09 ,"3,674 "
+240 -00,Mobile Home ,4.99/unit ,6.09 ,"3,129 "
+251 -00,Senior Adult Housing—Detached ,3.68/unit ,6.09 ,"2,307 "
+252 -00,Senior Adult Housing—Attached ,3.44/unit ,6.09 ,"2,157 "
+253 -00,Congregate Care Facility ,2.02/unit ,6.2 ,"1,289 "
+254 -00,Assisted Living Facility ,2.66/bed ,6.2 ,"1,698 "
+255 -00,Continuing Care Retirement Community ,2.28/unit ,6.09 ,"1,532 "
+310 -00,Hotel ,8.92/available room ,6.09 ,"5,593 "
+311 -00,All Suites Hotel ,6.24/available room ,6.09 ,"3,913 "
+320 -00,Motel ,9.11/ available room ,6.09 ,"5,712 "
+420 -00,Marina ,2.96/berth ,6.30 ,"1,920 "
+430 -00,Golf Course ,35.74/hole ,6.30 ,"23,183 "
+480 -00,Amusement Park ,75.76/acre ,6.30 ,"49,142 "
+490 -00,Tennis Courts (open to public; no ancillary facilities) ,31.04/court ,6.30 ,"20,134 "
+491 -00,Racquet Club ,38.70/court ,6.30 ,"25,103 "
+492 -00,Health/Fitness ,"4.02/1,000 GSF ",6.30 ,"2,608 "
+520 -00,Elementary School ,1.29/student ,1.25 ,125 
+530 -00,High School ,1.71/student ,4.00 ,704 
+540 -00,Jr./Community College ,1.20/student ,6.07 ,750 
+550 -00,University ,2.38/student ,6.07 ,"1,487 "
+560 -00,Church/Synagogue ,"9.11/1,000 GSF ",4.00 ,"3,752 "
+565 -00,Day Care Center ,"79.26/1,000 GSF ",1.25 ,"5,100 "
+610 -00,Hospital ,"17.57/1,000 GSF ",6.20 ,"11,216 "
+620 -00,Nursing Home ,2.37/bed ,6.20 ,"1,513 "
+630 -00,Clinic ,"31.45/1,000 GSF ",6.20 ,"20,076 "
+710-00,"1—50,000 ","15.65/1,000 GSF ",6.07 ,"9,778 "
+710-01,"50,001—100,000 ","13.34/1,000 GSF ",6.07 ,"8,337 "
+710-02,"100,001—200,000 ","11.37/1,000 GSF ",6.07 ,"7,109 "
+710-03,"200,001—300,000 ","10.36/1,000 GSF ",6.07 ,"6,476 "
+710-04,"300,001—400,000 ","9.70/1,000 GSF ",6.07 ,"6,061 "
+710-05,"400,001—500,000 ","9.21/1,000 GSF ",6.07 ,"5,758 "
+710-06,"500,001—600,000 ","8.83/1,000 GSF ",6.07 ,"5,521 "
+710-07,"600,001—700,000 ","8.53/1,000 GSF ",6.07 ,"5,329 "
+710-08,"700,001—more ","8.27/1,000 GSF ",6.07 ,"5,168 "
+720 -00,Medical Office Building ,"36.13/1,000 GSF ",6.07 ,"22,580 "
+750 -00,Office Park 7 ,11.42/GSF ,6.07 ,"7,137 "
+760 -00,Research Center ,"8.11/1,000 GSF ",6.07 ,"5,068 "
+770 -00,Business Park ,"12.76/1,000 GSF ",6.07 ,"7,975 "
+813 -00,Discount Superstore (free standing) ,"50.75/1,000 GSF ",5.9 ,"12,948 "
+816 -00,Hardware/Paint Store/Pool Supply (free standing) ,"51.29/1,000 GSF ",2.36 ,"9,347 "
+817 -00,Nursery/Garden Center ,"36.08/1,000 GSF ",4.00 ,"11,144 "
+820-00,"1—10,000 ","152.03/1,000 GSF ",2.36 ,"11,821 "
+820-01,"10,001—50,000 ","86.56/1,000 GSF ",2.36 ,"8,833 "
+820-02,"50,001—100,000 ","67.91/1,000 GSF ",2.36 ,"8,416 "
+820-03,"100,001—200,000 ","53.28/1,000 GSF ",4.00 ,"12,727 "
+820-04,"200,001—300,000 ","46.23/1,000 GSF ",4.00 ,"11,805 "
+820-05,"300,001—400,000 ","41.80/1,000 GSF ",5.90 ,"16,252 "
+820-06,"400,001—500,000 ","38.66/1,000 GSF ",5.90 ,"15,501 "
+820-07,"500,001—600,000 ","36.27/1,000 GSF ",5.90 ,"14,763 "
+820-08,"600,001—800,000 ","32.80/1,000 GSF ",5.90 ,"13,748 "
+820-09,"800,001—1,000,000 ","30.33/1,000 GSF ",5.90 ,"12,899 "
+820-10,"1,000,001—1,200,000 ","28.46/1,000 GSF ",5.90 ,"12,274 "
+820-11,"1,200,001—more ","27.67/1,000 GSF ",5.90 ,"12,103 "
+841-00,Car Sales 5 ,,,
+841-01,Car Sales (new and used car sales area) ,"33.56/1,000 GSF ",5.90 ,"15,290 "
+841-02,Car Sales (services and parts sales area) ,"21.44/1,000 GSF ",5.90 ,"9,768 "
+848 -00,Tire Store ,"24.87/1,000 GSF ",5.9 ,"15,108 "
+850 -00,Supermarket (free standing) ,"102.24/1,000 GSF ",2.36 ,"12,422 "
+851 -00,Convenience Market ,"737.99/1,000 GSF ",1.25 ,"33,243 "
+853 -00,Convenience Market with Gasoline ,"845.60/1,000 GSF ",1.25 ,"38,090 "
+862 -00,Home Improvement Superstore ,"30.74/1,000 GSF ",5.9 ,"14,005 "
+875 -00,Department Store (free standing) ,"22.88/1,000 GSF ",5.9 ,"5,838 "
+880 -00,Pharmacy/Drugstore (no Drive thru) ,"90.06/1,000 GSF ",2.36 ,"7,003 "
+881 -00,Pharmacy/Drugstore (with Drive thru) ,"96.91/1,000 GSF ",2.36 ,"7,535 "
+890 -00,Furniture Store (free standing) ,"5.06/1,000 GSF ",4.00 ,"1,042 "
+911 -00,Bank (Walk-in) ,"156.48/1,000 GSF ",1.25 ,"10,069 "
+912 -00,Bank (Drive-in) ,"246.49/1,000 GSF ",1.25 ,"15,862 "
+931-00,Quality Restaurant ,"89.95/1,000 GSF -or- ",6.16 ,"42,787 "
+931-01,Quality Restaurant ,2.86/seat 8 ,6.16 ,"1,360 "
+932-00,High Turnover Restaurant ,"158.37/1,000 GSF -or- ",4.00 ,"32,612 "
+932-00,High Turnover Restaurant ,4.83/seat 8 ,4.00 ,995 
+933 -00,Fast Food Restaurant No Drive Thru ,"716.00/1,000 GSF ",1.25 ,"46,075 "
+934 -00,Fast Food Restaurant with Drive Thru ,"496.12/1,000 GSF ",1.25 ,"31,925 "
+937 -00,Coffee/Donut Shop ,"818.58/1,000 GSF ",1.25 ,"36,838 "
+944 -00,Service Stations w/Gasoline ,168.56/pump ,1.25 ,"7,593 "

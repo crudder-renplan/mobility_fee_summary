@@ -1,15 +1,18 @@
 import os
-import uuid
-import arcpy
-import pandas as pd
-import numpy as np
-from arcgis import GeoAccessor, GeoSeriesAccessor
 from pathlib import Path
 
-import geopandas as gpd
 import fiona
+import geopandas as gpd
+import numpy as np
 import pandas as pd
+from pandas.api.types import is_numeric_dtype
+from arcgis import GeoAccessor, GeoSeriesAccessor
 
+fee_multiplier = {2015: 1.43, 2016: 1.477,
+                  2017: 1.527, 2018: 1.577,
+                  2019: 1.628, 2020: 1.682}
+SCRIPT_PATH = Path(__file__)
+PROJ_PATH = SCRIPT_PATH.parent
 PERMITS_STATUS_DICT = dict(
     [
         ("C", "Collected"),
@@ -27,6 +30,7 @@ PERMITS_FIELDS_DICT = dict(
         ("STATUS_CODE", "STATUS"),
         ("COL_CON", "CONST_COST"),
         ("COL_ADM", "ADMIN_COST"),
+        ("CRED_AMT", "CREDITS"),
         ("ASSD_CATTHRES_CATC_CODE", "CAT_CODE"),
         ("ASSD_BASIS_QTY", "UNITS_VAL"),
     ]
@@ -47,53 +51,6 @@ def make_path(in_folder, *subnames):
         str: String path
     """
     return os.path.join(in_folder, *subnames)
-
-
-def make_inmem_path(file_name=None):
-    """Generates an in_memory path usable by arcpy that is unique to avoid any overlapping names. If a file_name is
-    provided, the in_memory file will be given that name with an underscore appended to the beginning.
-
-    Returns:
-        String; in_memory path
-
-    Raises:
-        ValueError, if file_name has been used already
-    """
-    if not file_name:
-        unique_name = f"_{str(uuid.uuid4().hex)}"
-    else:
-        unique_name = f"_{file_name}"
-    try:
-        in_mem_path = make_path("in_memory", unique_name)
-        if arcpy.Exists(in_mem_path):
-            raise ValueError
-        else:
-            return in_mem_path
-    except ValueError:
-        print("The file_name supplied already exists in the in_memory space")
-
-
-def check_overwrite_output(output, overwrite=False):
-    """A helper function that checks if an output file exists and
-        deletes the file if an overwrite is expected.
-
-    Args:
-        output: Path
-            The file to be checked/deleted
-        overwrite: Boolean
-            If True, `output` will be deleted if it already exists.
-            If False, raises `RuntimeError`.
-
-    Raises:
-        RuntimeError:
-            If `output` exists and `overwrite` is False.
-    """
-    if arcpy.Exists(output):
-        if overwrite:
-            print(f"--- --- deleting existing file {output}")
-            arcpy.Delete_management(output)
-        else:
-            raise RuntimeError(f"Output file {output} already exists")
 
 
 def csv_to_df(csv_file, use_cols, rename_dict):
@@ -117,37 +74,7 @@ def csv_to_df(csv_file, use_cols, rename_dict):
     return df
 
 
-def polygons_to_points(in_fc, out_fc, fields="*", skip_nulls=False, null_value=0):
-    """Convenience function to dump polygon features to centroids and save as a new feature class.
-
-    Args:
-         in_fc (str): Path to input feature class
-         out_fc (str): Path to output point fc
-         fields (str or list, default="*"): [String,...] fields to include in conversion
-         skip_nulls (bool, default=False): Control whether records using nulls are skipped.
-         null_value (int, default=0): Replaces null values from the input with a new value.
-
-     Returns:
-         out_fc (str): path to output point feature class
-    """
-    # TODO: adapt to search-cursor-based derivation of polygon.centroid to ensure point is within polygon
-    sr = arcpy.Describe(in_fc).spatialReference
-    if fields == "*":
-        fields = [f.name for f in arcpy.ListFields(in_fc) if not f.required]
-    elif isinstance(fields, str):
-        fields = [fields]
-    fields.append("SHAPE@XY")
-    a = arcpy.da.FeatureClassToNumPyArray(
-        in_table=in_fc, field_names=fields, skip_nulls=skip_nulls, null_value=null_value
-    )
-    arcpy.da.NumPyArrayToFeatureClass(
-        in_array=a, out_table=out_fc, shape_fields="SHAPE@XY", spatial_reference=sr
-    )
-    fields.remove("SHAPE@XY")
-    return out_fc
-
-
-def add_xy_from_poly(poly_fc, poly_key, table_df, table_key):
+def add_xy_from_poly(poly_fc, poly_key, table_df, table_key, to_crs=None):
     """
     Calculates x,y coordinates for a given polygon feature class and returns as new
     columns of a data
@@ -161,93 +88,34 @@ def add_xy_from_poly(poly_fc, poly_key, table_df, table_key):
     Returns:
         pandas.DataFrame: updated `table_df` with XY centroid coordinates appended
     """
-    pts = polygons_to_points(
-        in_fc=poly_fc, out_fc=make_inmem_path(), fields=poly_key, null_value=0.0
-    )
-    pts_sdf = pd.DataFrame.spatial.from_featureclass(pts)
-
-    esri_ids = ["OBJECTID", "FID"]
-    if any(item in pts_sdf.columns.to_list() for item in esri_ids):
-        pts_sdf.drop(labels=esri_ids, axis=1, inplace=True, errors="ignore")
-    # join permits to parcel points MANY-TO-ONE
-    print("--- merging geo data to tabular")
-    # pts = table_df.merge(right=pts_sdf, how="inner", on=table_key)
-    return pd.merge(
-        left=table_df, right=pts_sdf, how="inner", left_on=table_key, right_on=poly_key
-    )
-
-
-def df_to_points(df, out_fc, shape_fields, from_sr, to_sr, overwrite=False):
-    """Use a pandas data frame to export an arcgis point feature class.
-
-    Args:
-        df (pandas.DataFrame): A dataframe with valid `shape_fields` that can be
-            interpreted as x,y coordinates
-        out_fc (str): Path to the point feature class to be generated.
-        shape_fields (list): Columns to be used as shape fields (x, y)
-        from_sr (arcpy.SpatialReference): The spatial reference definition for
-            the coordinates listed in `shape_field`
-        to_sr (arcpy.SpatialReference): The spatial reference definition
-            for the output features.
-        overwrite (bool, default=False)
-
-    Returns:
-        out_fc (str): Path
-    """
-    # set paths
-    temp_fc = make_inmem_path()
-
-    # coerce sr to Spatial Reference object
-    # Check if it is a spatial reference already
-    try:
-        # sr objects have .type attr with one of two values
-        check_type = from_sr.type
-        type_i = ["Projected", "Geographic"].index(check_type)
-    except:
-        from_sr = arcpy.SpatialReference(from_sr)
-    try:
-        # sr objects have .type attr with one of two values
-        check_type = to_sr.type
-        type_i = ["Projected", "Geographic"].index(check_type)
-    except:
-        to_sr = arcpy.SpatialReference(to_sr)
-
-    # build array from dataframe
-    in_array = np.array(np.rec.fromrecords(df.values, names=df.dtypes.index.tolist()))
-    # write to temp feature class
-    arcpy.da.NumPyArrayToFeatureClass(
-        in_array=in_array,
-        out_table=temp_fc,
-        shape_fields=shape_fields,
-        spatial_reference=from_sr,
-    )
-    # reproject if needed, otherwise dump to output location
-    if from_sr != to_sr:
-        arcpy.Project_management(
-            in_dataset=temp_fc, out_dataset=out_fc, out_coor_system=to_sr
-        )
+    if ".gdb" in poly_fc:
+        fds, layer = os.path.split(poly_fc)
+        gdb, _ = os.path.split(fds)
+        polys = gpd.read_file(filename=gdb, driver="FileGDB", layer=layer)
     else:
-        out_path, out_fc = os.path.split(out_fc)
-        if overwrite:
-            check_overwrite_output(output=out_fc, overwrite=overwrite)
-        arcpy.FeatureClassToFeatureClass_conversion(
-            in_features=temp_fc, out_path=out_path, out_name=out_fc
-        )
-    # clean up temp_fc
-    arcpy.Delete_management(in_data=temp_fc)
-    return out_fc
+        polys = gpd.read_file(poly_fc)
+    if to_crs:
+        polys.to_crs(epsg=to_crs)
+    cols = [col for col in polys.columns.tolist() if col not in ["geometry", poly_key]]
+    polys.drop(columns=cols, inplace=True)
+    pts = polys.copy()
+    pts["geometry"] = pts['geometry'].centroid
+    return pd.merge(
+        left=table_df, right=pts, how="inner", left_on=table_key, right_on=poly_key,
+    )
 
 
 # permit functions
 def clean_permit_data(
-    permit_csv,
-    parcel_fc,
-    permit_key,
-    poly_key,
-    rif_lu_tbl,
-    dor_lu_tbl,
-    out_file,
-    out_crs,
+        permit_csv,
+        parcel_fc,
+        permit_key,
+        poly_key,
+        rif_lu_tbl,
+        dor_lu_tbl,
+        mobility_fee_tbl,
+        out_file,
+        out_crs,
 ):
     """
     Reformat and clean RER road impact permit data, specific to the TOC tool
@@ -272,24 +140,32 @@ def clean_permit_data(
 
     # clean up and concatenate data where appropriate
     #   fix parcelno to string of 13 len
-    permit_df[permit_key] = permit_df[permit_key].astype(np.str)
+    permit_df[permit_key] = permit_df[permit_key].astype(str)
     permit_df[poly_key] = permit_df[permit_key].apply(lambda x: x.zfill(13))
-    permit_df["CONST_COST"] = (
-        permit_df["CONST_COST"]
-        .apply(lambda x: x.replace("$", ""))
-        .apply(lambda x: x.replace(" ", ""))
-        .apply(lambda x: x.replace(",", ""))
-        .astype(float)
-    )
-    permit_df["ADMIN_COST"] = (
-        permit_df["ADMIN_COST"]
-        .apply(lambda x: x.replace("$", ""))
-        .apply(lambda x: x.replace(" ", ""))
-        .apply(lambda x: x.replace(",", ""))
-        .astype(float)
-    )
-    permit_df["COST"] = permit_df["CONST_COST"] + permit_df["ADMIN_COST"]
-    #   id project as pedestrain oriented
+    if permit_df.CONST_COST.dtype != float:
+        permit_df["CONST_COST"] = (
+            permit_df["CONST_COST"]
+                .apply(lambda x: x.replace("$", ""))
+                .apply(lambda x: x.replace(" ", ""))
+                .apply(lambda x: x.replace(",", ""))
+                .astype(float)
+        )
+        permit_df["ADMIN_COST"] = (
+            permit_df["ADMIN_COST"]
+                .apply(lambda x: x.replace("$", ""))
+                .apply(lambda x: x.replace(" ", ""))
+                .apply(lambda x: x.replace(",", ""))
+                .astype(float)
+        )
+        permit_df["CREDITS"] = (
+            permit_df["CREDITS"]
+                .apply(lambda x: x.replace("$", ""))
+                .apply(lambda x: x.replace(" ", ""))
+                .apply(lambda x: x.replace(",", ""))
+                .astype(float)
+        )
+    permit_df["RIF_TOTAL"] = permit_df["CONST_COST"] + permit_df["ADMIN_COST"] + permit_df["CREDITS"]
+    #   id project as pedestrian oriented
     permit_df["PED_ORIENTED"] = np.where(
         permit_df.CAT_CODE.str.contains(PERMITS_CAT_CODE_PEDOR), 1, 0
     )
@@ -313,135 +189,144 @@ def clean_permit_data(
     #   add landuse codes
     lu_df = pd.read_csv(rif_lu_tbl)
     dor_df = pd.read_csv(dor_lu_tbl)
+    mob_fee_df = pd.read_csv(mobility_fee_tbl)
+    # lu_df = lu_df.join(other=dor_df, on="DOR_UC", how="inner", rsuffix="_")
     lu_df = lu_df.merge(right=dor_df, how="inner", on="DOR_UC")
     permit_df = permit_df.merge(right=lu_df, how="inner", on="CAT_CODE")
-    #   drop unnecessary columns
-    permit_df.drop(columns=PERMITS_DROPS, inplace=True)
+    permit_df = permit_df.merge(right=mob_fee_df, how="inner",
+                                left_on="CAT_CODE", right_on="CODE")
+    # #   drop unnecessary columns
+    # permit_df.drop(columns=PERMITS_DROPS, inplace=True)
 
     # convert to points
     sdf = add_xy_from_poly(
-        poly_fc=parcel_fc, poly_key=poly_key, table_df=permit_df, table_key=permit_key
+        poly_fc=parcel_fc, poly_key=poly_key, table_df=permit_df, table_key=permit_key, to_crs=out_crs
     )
     sdf.fillna(0.0, inplace=True)
 
-    # get xy coords and drop SHAPE
-    sdf["X"] = sdf[sdf.spatial.name].apply(lambda c: c.x)
-    sdf["Y"] = sdf[sdf.spatial.name].apply(lambda c: c.y)
-
-    # TODO: assess why sanitize columns as false fails (low priority)
-    # sdf.spatial.to_featureclass(location=out_file, sanitize_columns=False)
-    df_to_points(
-        df=sdf.drop(columns="SHAPE", inplace=True),
-        out_fc=out_file,
-        shape_fields=["X", "Y"],
-        from_sr=out_crs,
-        to_sr=out_crs,
-    )
+    sdf = gpd.GeoDataFrame(sdf, geometry=sdf['geometry'], crs=out_crs)
+    conversion = {col: float for col in sdf.columns if is_numeric_dtype(sdf[col])}
+    sdf = sdf.astype(conversion)
+    sdf.to_file(out_file)
     return sdf
 
 
 if __name__ == "__main__":
     # raw data files/paths
-    data_folder = Path(r"C:\Users\V_RPG\Desktop\Miami-Dade MobilityFee - Permits")
-    raw_permits = Path(data_folder, "source_reports")
-    RIF_CAT_CODE_TBL = Path(data_folder, "docs", "road_impact_fee_cat_codes.csv")
-    DOR_UC_TBL = Path(data_folder, "docs", "Land_Use_Recode.csv")
+    raw_permits = Path(PROJ_PATH, "source_reports")
+    RIF_CAT_CODE_TBL = Path(PROJ_PATH, "docs", "road_impact_fee_cat_codes.csv")
+    DOR_UC_TBL = Path(PROJ_PATH, "docs", "Land_Use_Recode.csv")
+    GEOMS = Path(PROJ_PATH, "geoms")
 
     # summary data files/paths
-    gdb_path = r"C:\OneDrive_RP\OneDrive - Renaissance Planning Group\SHARE\Mobility_Fee(1)\April21_Buffer.gdb"
-    layers = fiona.listlayers(gdb_path)
-    permit_path = Path(r"C:\Users\V_RPG\Desktop\Miami-Dade MobilityFee - Permits")
-    summary_gdf = gpd.read_file(gdb_path, driver="FileGDB", layer="Context_Area_Union")
+    summary_gdf = gpd.read_file(Path(GEOMS, "ContextAreas_Union.shp"))
     summary_gdf = summary_gdf.replace({"SMART": {0: "Out", 1: "In"}})
+
+    # infill polys/data/files
+    infill_gdf = gpd.read_file(Path(GEOMS, "UrbanInfillArea.shp"))
+    MOBILITY_FEE_TBL = Path(PROJ_PATH, "docs", "draft_mobility_fee.csv")
 
     # parcel data files/paths
     parcel_gdbs = r"C:\OneDrive_RP\OneDrive - Renaissance Planning Group\SHARE\PMT_link\Data\CLEANED"
 
     # ratio data files/paths
-    ratio_file = make_path(data_folder, "MobilityFeeCalculation_v3_chs.xlsb.xlsx")
+    ratio_file = Path(PROJ_PATH, "MobilityFeeCalculation_v3_chs.xlsb.xlsx")
     sheet_name = "RIF_FEE_RATIO"
     column_names = [
         "ITE Land Use Code",
         "Land Use",
         "Unit",
         "Printed RIF (Current Fee)",
-        # "R1_Within SMART Corridor_FEE",  "R1_Outside SMART Corridor_FEE",
-        # "R2_Within Smart Corridor_FEE", "R2_Outside Smart Corridor_FEE",
-        # "R3_Within Smart Corridor_FEE", "R3_Outside Smart Corridor_FEE",
-        # "R4_Within Smart Corridor_FEE", "R4_Outside Smart Corridor_FEE",
-        "R1_Within SMART Corridor_RATIO",  # "R1_Outside SMART Corridor_RATIO",
-        "R2_Within Smart Corridor_RATIO",
-        "R2_Outside Smart Corridor_RATIO",
-        "R3_Within Smart Corridor_RATIO",
-        "R3_Outside Smart Corridor_RATIO",
-        "R4_Within Smart Corridor_RATIO",
-        "R4_Outside Smart Corridor_RATIO",
+        "R1_In_RATIO",
+        "R2_In_RATIO",
+        "R2_Out_RATIO",
+        "R3_In_RATIO",
+        "R3_Out_RATIO",
+        "R4_In_RATIO",
+        "R4_Out_RATIO",
     ]
     ratio_df = pd.read_excel(
-        filepath=ratio_file, sheet_name=sheet_name, header=0, usecols=column_names
+        io=ratio_file, sheet_name=sheet_name, header=0, usecols=column_names
     )
 
-    out_folder = Path(data_folder, "outputs", "version2")
+    out_folder = Path(PROJ_PATH, "outputs", "version2")
     dfs = []
-    for year in range(2015, 2019):
-        permits = data_folder.glob(f"*{year}.csv")
+    for year in [2015, 2016, 2017, 2018, 2019, 2020]:
+        pdc_mult = fee_multiplier[year]
+        permits = list(raw_permits.glob(f"*{year}.csv"))
         out_file = permits[0].stem
         parcels = make_path(parcel_gdbs, f"PMT_{year}.gdb", "Polygons", "Parcels")
-        permit_sdf = clean_permit_data(
+        if year == 2020:
+            parcels = make_path(parcel_gdbs, f"PMT_2019.gdb", "Polygons", "Parcels")
+        permit_gdf = clean_permit_data(
             permit_csv=permits[0],
             parcel_fc=parcels,
-            permit_key="FOLIO_NUM",
+            permit_key="FOLIO",
             poly_key="FOLIO",
             rif_lu_tbl=RIF_CAT_CODE_TBL,
             dor_lu_tbl=DOR_UC_TBL,
+            mobility_fee_tbl=MOBILITY_FEE_TBL,
             out_file=make_path(out_folder, "RIF_Permits_{}.shp".format(year)),
             out_crs=2881,
         )
-        permit_gdf = gpd.GeoDataFrame(permit_sdf, crs=2881, geometry="SHAPE")
         permit_gdf.to_crs(crs=summary_gdf.crs, inplace=True)
-        permit_gdf = permit_gdf.join(ratio_df, on="CAT_CODE", how="inner")
+        permit_gdf = permit_gdf.merge(right=ratio_df,
+                                      left_on="CAT_CODE", right_on='ITE Land Use Code',
+                                      how="inner")
         # zero out duplicated costs to 0 so the values arent repeated
         permit_gdf.loc[
-            permit_gdf.assign(d=permit_gdf.COST).duplicated(["PROC_NUM", "FOLIO"]),
-            "COST",
+            permit_gdf.assign(d=permit_gdf.CONST_COST).duplicated(["PROC_NUM", "FOLIO"]),
+            "CONST_COST",
         ] = 0.0
+        permit_gdf.loc[
+            permit_gdf.assign(d=permit_gdf.ADMIN_COST).duplicated(["PROC_NUM", "FOLIO"]),
+            "ADMIN_COST",
+        ] = 0.0
+        permit_gdf.loc[
+            permit_gdf.assign(d=permit_gdf.CREDITS).duplicated(["PROC_NUM", "FOLIO"]),
+            "CREDITS",
+        ] = 0.0
+
+        # id points inside and outside urban infill area
+        permit_gdf["infill"] = permit_gdf.intersects(infill_gdf.unary_union)
 
         # intersect permits with context areas and add RIF/MF comparison columns to get summary data
         intersect = pd.DataFrame(
             gpd.overlay(df1=summary_gdf, df2=permit_gdf, keep_geom_type=False)
         )
+        intersect["CONST_COST"] = intersect["CONST_COST"] * pdc_mult
+        intersect["ADMIN_COST"] = intersect["ADMIN_COST"] * pdc_mult
+        intersect["CREDITS"] = intersect["CREDITS"] * pdc_mult
+        intersect["RIF_TOTAL"] = intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
+
+        # incorporate
         for ix, row in summary_gdf.iterrows():
             ring = row["Ring"]
             smart = row["SMART"]
-            if smart == 1:
-                smart = "Within"
-            if smart == 0:
-                smart = "Outside"
             intersect["RATIO"] = np.where(
-                intersect["Ring"] == ring & intersect["SMART"] == smart,
-                intersect[f"R{ring}_{smart}Corridor_RATIO"],
+                (intersect["Ring"] == ring) & (intersect["SMART"] == smart),
+                intersect[f"R{ring}_{smart}_RATIO"], 0
             )
-        intersect["MOBILITY_FEE"] = intersect["COST"] * intersect["RATIO"]
-        intersect["DIFF_MF_vs_RF"] = intersect["MOBILITY_FEE"] - intersect["COST"]
+        # intersect["MOBILITY_FEE"] = intersect["RIF_TOTAL"] * intersect["RATIO"]
+        # intersect["DIFF_MF_vs_RF"] = intersect["MOBILITY_FEE"] - intersect["RIF_TOTAL"]
 
+        agg_funcs = {
+            "UNITS_VAL": "sum",
+            "CONST_COST": "sum",
+            "ADMIN_COST": "sum",
+            "CREDITS": "sum",
+            "RIF_TOTAL": "sum"
+        }
         # summarize data by Context Area and various Landuse types
         df = (
-            intersect.groupby(
-                [
-                    "Ring",
-                    "SMART",
-                    "PED_ORIENT",
-                    "CAT_CODE",
-                    "LANDUSE",
-                    "SPC_LU",
-                    "GN_VA_LU",
-                    "UNITS",
-                ]
-            )["UNITS_VAL", "COST", "RATIO", "MOBILITY_FEE", "DIFF_MF_vs_RF"]
-            .sum()
-            .reset_index()
+            intersect.groupby(["Ring", "SMART", "PED_ORIENTED",
+                               "CAT_CODE", "LANDUSE",
+                               "SPC_LU", "GN_VA_LU", "UNITS", ]
+                              )["UNITS_VAL", "CONST_COST", "ADMIN_COST",
+                                "CREDITS", "RIF_TOTAL"].sum().reset_index()  # "MOBILITY_FEE", "DIFF_MF_vs_RF"
         )
         df["YEAR"] = year
+        df["RIF_TOTAL"] = df["RIF_TOTAL"] / df["UNITS_VAL"]
         # df.rename(columns={"SPC_LU":"LANDUSE"}, inplace=True)
         df["SPC_LU"].replace({"0": "Unknown"}, inplace=True)
         df["GN_VA_LU"].replace({"0": "Unknown"}, inplace=True)
