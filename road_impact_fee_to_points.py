@@ -6,6 +6,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 from pandas.api.types import is_numeric_dtype
+from pandas.api.types import is_float_dtype
 from arcgis import GeoAccessor, GeoSeriesAccessor
 
 fee_multiplier = {2015: 1.43, 2016: 1.477,
@@ -113,7 +114,7 @@ def clean_permit_data(
         poly_key,
         rif_lu_tbl,
         dor_lu_tbl,
-        mobility_fee_tbl,
+        mobility_fee_df,
         out_file,
         out_crs,
 ):
@@ -142,7 +143,7 @@ def clean_permit_data(
     #   fix parcelno to string of 13 len
     permit_df[permit_key] = permit_df[permit_key].astype(str)
     permit_df[poly_key] = permit_df[permit_key].apply(lambda x: x.zfill(13))
-    if permit_df.CONST_COST.dtype != float:
+    if not is_float_dtype(permit_df.CONST_COST):
         permit_df["CONST_COST"] = (
             permit_df["CONST_COST"]
                 .apply(lambda x: x.replace("$", ""))
@@ -164,7 +165,6 @@ def clean_permit_data(
                 .apply(lambda x: x.replace(",", ""))
                 .astype(float)
         )
-    permit_df["RIF_TOTAL"] = permit_df["CONST_COST"] + permit_df["ADMIN_COST"] + permit_df["CREDITS"]
     #   id project as pedestrian oriented
     permit_df["PED_ORIENTED"] = np.where(
         permit_df.CAT_CODE.str.contains(PERMITS_CAT_CODE_PEDOR), 1, 0
@@ -189,14 +189,10 @@ def clean_permit_data(
     #   add landuse codes
     lu_df = pd.read_csv(rif_lu_tbl)
     dor_df = pd.read_csv(dor_lu_tbl)
-    mob_fee_df = pd.read_csv(mobility_fee_tbl)
-    # lu_df = lu_df.join(other=dor_df, on="DOR_UC", how="inner", rsuffix="_")
     lu_df = lu_df.merge(right=dor_df, how="inner", on="DOR_UC")
     permit_df = permit_df.merge(right=lu_df, how="inner", on="CAT_CODE")
-    permit_df = permit_df.merge(right=mob_fee_df, how="inner",
+    permit_df = permit_df.merge(right=mobility_fee_df, how="inner",
                                 left_on="CAT_CODE", right_on="CODE")
-    # #   drop unnecessary columns
-    # permit_df.drop(columns=PERMITS_DROPS, inplace=True)
 
     # convert to points
     sdf = add_xy_from_poly(
@@ -229,25 +225,25 @@ if __name__ == "__main__":
     # parcel data files/paths
     parcel_gdbs = r"C:\OneDrive_RP\OneDrive - Renaissance Planning Group\SHARE\PMT_link\Data\CLEANED"
 
-    # ratio data files/paths
-    ratio_file = Path(PROJ_PATH, "MobilityFeeCalculation_v3_chs.xlsb.xlsx")
-    sheet_name = "RIF_FEE_RATIO"
-    column_names = [
-        "ITE Land Use Code",
-        "Land Use",
-        "Unit",
-        "Printed RIF (Current Fee)",
-        "R1_In_RATIO",
-        "R2_In_RATIO",
-        "R2_Out_RATIO",
-        "R3_In_RATIO",
-        "R3_Out_RATIO",
-        "R4_In_RATIO",
-        "R4_Out_RATIO",
-    ]
-    ratio_df = pd.read_excel(
-        io=ratio_file, sheet_name=sheet_name, header=0, usecols=column_names
-    )
+    # # ratio data files/paths
+    # ratio_file = Path(PROJ_PATH, "MobilityFeeCalculation_v3_chs.xlsb.xlsx")
+    # sheet_name = "RIF_FEE_RATIO"
+    # column_names = [
+    #     "ITE Land Use Code",
+    #     "Land Use",
+    #     "Unit",
+    #     "Printed RIF (Current Fee)",
+    #     "R1_In_RATIO",
+    #     "R2_In_RATIO",
+    #     "R2_Out_RATIO",
+    #     "R3_In_RATIO",
+    #     "R3_Out_RATIO",
+    #     "R4_In_RATIO",
+    #     "R4_Out_RATIO",
+    # ]
+    # # ratio_df = pd.read_excel(
+    # #     io=ratio_file, sheet_name=sheet_name, header=0, usecols=column_names
+    # # )
 
     out_folder = Path(PROJ_PATH, "outputs", "version2")
     dfs = []
@@ -258,6 +254,11 @@ if __name__ == "__main__":
         parcels = make_path(parcel_gdbs, f"PMT_{year}.gdb", "Polygons", "Parcels")
         if year == 2020:
             parcels = make_path(parcel_gdbs, f"PMT_2019.gdb", "Polygons", "Parcels")
+
+        # scale mobility fee values by year
+        mobility_fee_df = pd.read_csv(MOBILITY_FEE_TBL)
+        mobility_fee_df["fee_outside"] *= pdc_mult
+        mobility_fee_df["fee_inside"] *= pdc_mult
         permit_gdf = clean_permit_data(
             permit_csv=permits[0],
             parcel_fc=parcels,
@@ -265,27 +266,14 @@ if __name__ == "__main__":
             poly_key="FOLIO",
             rif_lu_tbl=RIF_CAT_CODE_TBL,
             dor_lu_tbl=DOR_UC_TBL,
-            mobility_fee_tbl=MOBILITY_FEE_TBL,
+            mobility_fee_df=mobility_fee_df,
             out_file=make_path(out_folder, "RIF_Permits_{}.shp".format(year)),
             out_crs=2881,
         )
         permit_gdf.to_crs(crs=summary_gdf.crs, inplace=True)
-        permit_gdf = permit_gdf.merge(right=ratio_df,
-                                      left_on="CAT_CODE", right_on='ITE Land Use Code',
-                                      how="inner")
-        # zero out duplicated costs to 0 so the values arent repeated
-        permit_gdf.loc[
-            permit_gdf.assign(d=permit_gdf.CONST_COST).duplicated(["PROC_NUM", "FOLIO"]),
-            "CONST_COST",
-        ] = 0.0
-        permit_gdf.loc[
-            permit_gdf.assign(d=permit_gdf.ADMIN_COST).duplicated(["PROC_NUM", "FOLIO"]),
-            "ADMIN_COST",
-        ] = 0.0
-        permit_gdf.loc[
-            permit_gdf.assign(d=permit_gdf.CREDITS).duplicated(["PROC_NUM", "FOLIO"]),
-            "CREDITS",
-        ] = 0.0
+        # permit_gdf = permit_gdf.merge(right=ratio_df,
+        #                               left_on="CAT_CODE", right_on='ITE Land Use Code',
+        #                               how="inner")
 
         # id points inside and outside urban infill area
         permit_gdf["infill"] = permit_gdf.intersects(infill_gdf.unary_union)
@@ -294,40 +282,34 @@ if __name__ == "__main__":
         intersect = pd.DataFrame(
             gpd.overlay(df1=summary_gdf, df2=permit_gdf, keep_geom_type=False)
         )
-        intersect["CONST_COST"] = intersect["CONST_COST"] * pdc_mult
-        intersect["ADMIN_COST"] = intersect["ADMIN_COST"] * pdc_mult
-        intersect["CREDITS"] = intersect["CREDITS"] * pdc_mult
-        intersect["RIF_TOTAL"] = intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
+        intersect["MF_RT_BASED_FEE"] = np.where(intersect["infill"] == True,
+                                                intersect["fee_inside"] * intersect["UNITS_VAL"],
+                                                intersect["fee_outside"] * intersect["UNITS_VAL"])
+        # drop duplicated RIF cons/adm/credit
+        # zero out duplicated costs to 0 so the values arent repeated and get sum of Const/Admin/Credit
+        intersect.loc[
+            intersect.assign(d=intersect.CONST_COST).duplicated(["PROC_NUM", "FOLIO"]),
+            "CONST_COST",
+        ] = 0.0
+        intersect.loc[
+            intersect.assign(d=intersect.ADMIN_COST).duplicated(["PROC_NUM", "FOLIO"]),
+            "ADMIN_COST",
+        ] = 0.0
+        intersect.loc[
+            intersect.assign(d=intersect.CREDITS).duplicated(["PROC_NUM", "FOLIO"]),
+            "CREDITS",
+        ] = 0.0
+        intersect["ROAD_IMPACT_FEE"] = intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
 
-        # incorporate
-        for ix, row in summary_gdf.iterrows():
-            ring = row["Ring"]
-            smart = row["SMART"]
-            intersect["RATIO"] = np.where(
-                (intersect["Ring"] == ring) & (intersect["SMART"] == smart),
-                intersect[f"R{ring}_{smart}_RATIO"], 0
-            )
-        # intersect["MOBILITY_FEE"] = intersect["RIF_TOTAL"] * intersect["RATIO"]
-        # intersect["DIFF_MF_vs_RF"] = intersect["MOBILITY_FEE"] - intersect["RIF_TOTAL"]
-
-        agg_funcs = {
-            "UNITS_VAL": "sum",
-            "CONST_COST": "sum",
-            "ADMIN_COST": "sum",
-            "CREDITS": "sum",
-            "RIF_TOTAL": "sum"
-        }
         # summarize data by Context Area and various Landuse types
         df = (
             intersect.groupby(["Ring", "SMART", "PED_ORIENTED",
                                "CAT_CODE", "LANDUSE",
                                "SPC_LU", "GN_VA_LU", "UNITS", ]
-                              )["UNITS_VAL", "CONST_COST", "ADMIN_COST",
-                                "CREDITS", "RIF_TOTAL"].sum().reset_index()  # "MOBILITY_FEE", "DIFF_MF_vs_RF"
+                              )["ROAD_IMPACT_FEE", "MF_RT_BASED_FEE"].sum().reset_index()  # "MOBILITY_FEE", "DIFF_MF_vs_RF"
         )
+        df["DIFF_MF_vs_RF"] = intersect["MF_RT_BASED_FEE"] - intersect["ROAD_IMPACT_FEE"]
         df["YEAR"] = year
-        df["RIF_TOTAL"] = df["RIF_TOTAL"] / df["UNITS_VAL"]
-        # df.rename(columns={"SPC_LU":"LANDUSE"}, inplace=True)
         df["SPC_LU"].replace({"0": "Unknown"}, inplace=True)
         df["GN_VA_LU"].replace({"0": "Unknown"}, inplace=True)
         df.to_csv(path_or_buf=os.path.join(out_folder, f"{out_file}.csv"))
