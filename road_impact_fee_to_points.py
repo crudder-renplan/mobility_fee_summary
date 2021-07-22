@@ -245,7 +245,7 @@ if __name__ == "__main__":
     # #     io=ratio_file, sheet_name=sheet_name, header=0, usecols=column_names
     # # )
 
-    out_folder = Path(PROJ_PATH, "outputs", "version2")
+    out_folder = Path(PROJ_PATH, "outputs", "version3")
     dfs = []
     for year in [2015, 2016, 2017, 2018, 2019, 2020]:
         pdc_mult = fee_multiplier[year]
