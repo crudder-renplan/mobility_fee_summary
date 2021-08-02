@@ -1,0 +1,83 @@
+CODE,LU,fee_outside,fee_inside
+30-00,Truck Terminals,6.338,5.993
+130-00,Industrial Park,4.414,4.174
+140-00,Manufacturing,2.423,2.291
+150-00,Warehousing,3.146,2.974
+151-00,Mini-Warehouse,1.519,1.436
+210-00,Single-Family Detached,6001,5674
+220-00,Apartment (Rentals),4214,3984
+222-00,High-Rise Apartment or Condominium (more than three floors),2634,2490
+230-00,"Condominium, Townhouse",3674,3474
+240-00,Mobile Home,3129,2958
+251-00,Senior Adult Housing-Detached,2307,2182
+252-00,Senior Adult Housing-Attached,2157,2039
+253-00,Congregate Care Facility,1289,1219
+254-00,Assisted Living Facility,1698,1606
+255-00,Continuing Care Retirement Community,1532,1449
+310-00,Hotel,5593,5288
+311-00,All Suites Hotel,3913,3699
+320-00,Motel,5712,5401
+420-00,Marina,1920,1815
+430-00,Golf Course,23183,21920
+480-00,Amusement Park,49142,46465
+490-00,Tennis Courts (open to public; no ancillary facilities),20134,19037
+491-00,Racquet Club,25103,23735
+492-00,Health/Fitness,2.608,2.466
+520-00,Elementary School,125,118
+530-00,High School,704,666
+540-00,Jr./Community College,750,709
+550-00,University,1487,1406
+560-00,Church/Synagogue,3.752,3.547
+565-00,Day Care Center,5.1,4.823
+610-00,Hospital,11.216,10.605
+620-00,Nursing Home,1513,1430
+630-00,Clinic,20.076,18.982
+710-00,"1-50,000",9.778,9.246
+710-01,"50,001-100,000",8.337,7.883
+710-02,"100,001-200,000",7.109,6.722
+710-03,"200,001-300,000",6.476,6.123
+710-04,"300,001-400,000",6.061,5.731
+710-05,"400,001-500,000",5.758,5.444
+710-06,"500,001-600,000",5.521,5.221
+710-07,"600,001-700,000",5.329,5.039
+710-08,"700,001-more",5.168,4.886
+720-00,Medical Office Building,22.58,21.35
+750-00,Office Park?7,7.137,6.748
+760-00,Research Center,5.068,4.792
+770-00,Business Park,7.975,7.54
+813-00,Discount Superstore (free standing),12.948,12.243
+816-00,Hardware/Paint Store/Pool Supply (free standing),9.347,8.838
+817-00,Nursery/Garden Center,11.144,10.537
+820-00,"1-10,000",11.821,11.177
+820-01,"10,001-50,000",8.833,8.352
+820-02,"50,001-100,000",8.416,7.957
+820-03,"100,001-200,000",12.727,12.034
+820-04,"200,001-300,000",11.805,11.162
+820-05,"300,001-400,000",16.252,15.367
+820-06,"400,001-500,000",15.501,14.657
+820-07,"500,001-600,000 ",14.763,13.959
+820-08,"600,001-800,000",13.748,12.999
+820-09,"800,001-1,000,000",12.899,12.196
+820-10,"1,000,001-1,200,000",12.274,11.606
+820-11,"1,200,001-more",12.103,11.444
+841-00,Car Sales (new and used car sales area),15.29,14.457
+841-01,Car Sales (services and parts sales area),9.768,9.236
+848-00,Tire Store,15.108,14.285
+850-00,Supermarket (free standing),12.422,11.742
+851-00,Convenience Market,33.243,31.432
+853-00,Convenience Market with Gasoline,38.09,36.015
+862-00,Home Improvement Superstore,14.005,13.242
+875-00,Department Store (free standing),5.838,5.519
+880-00,Pharmacy/Drugstore (no Drive thru),7.003,6.621
+881-00,Pharmacy/Drugstore (with Drive thru),7.535,7.125
+890-00,Furniture Store (free standing),1.042,0.985
+911-00,Bank (Walk-in),10.069,9.521
+912-00,Bank (Drive-in),15.862,14.998
+931-00,Quality Restaurant,42.787,40.456
+931-01,Quality Restaurant,1360,1286
+932-00,High Turnover Restaurant,32.612,30.835
+932-01,High Turnover Restaurant,995,940
+933-00,Fast Food Restaurant No Drive Thru,46.075,43.565
+934-00,Fast Food Restaurant with Drive Thru,31.925,30.186
+937-00,Coffee/Donut Shop,36.838,34.864
+944-00,Service Stations w/Gasoline,7593,7179
