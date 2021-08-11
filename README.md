@@ -37,25 +37,34 @@ Project to summarize the Road Impact Fee permits and provide a comparison of tho
     1) read in data
         - read in Context Areas
         - read in Infill Area
-        - read in mobility_fee_table (draft fee for each LU with rate per units (sf or otherwise)
+        - read in rif_fee_table (draft fee for each LU with rate per units (sf or otherwise)
         - read in land use tables
         - read in parcels to spatialize the permits
     2) For each year:
+        - define scaling factor base on year
         - read in permit data
+        - scale rif_fee_table based on year 
+        - scale mf_schedule based on year
+        - join mf and rif sched tables to permits based on LU
+        - read in land use tables to permit data based on LU code in permits
         - clean up files and rename columns
-        - join mobility_fee_table and land use tables to permit data based on LU code in permits
-        - generate points from parcels and join permits to points with same FOLIO
+            - generate points from parcels and join permits to points with same FOLIO
         - use spatial data frame 
             - dump out a shapefile for validation
             - intersect with infill to identify parcel inside and outside infill area
             - intersect with Context Areas to acquire context area attributes (SMART Corridor, and Ring)
-        - calculate Mobility Fee from mobility fee rate table and # of units permit has assigned (MF_RT_BASED_FEE)
+        # CALCULATE RIF and MF from schedule and units
+        - generate calculated Road Impact Fee from rif schedule table and # of units permit has assigned
+        - generate calculated Mobility Fee from mf schedule table and # of units permit has assigned based on Corridor/RING combo
+        # CALCULATE Actual RIF in DB
         - zero out duplicated RIF fee values (Construction, Admin, Credits)
         - calculate Road Impact fee by summing the (Construction, Admin, Credits) fees (ROAD_IMPACT_FEE)
+        # AGGREGATE
         - Aggregate data on:
             ["Ring", "SMART", "PED_ORIENTED", "CAT_CODE", "LANDUSE", "SPC_LU", "GN_VA_LU", "UNITS", ]
             - sum ROAD_IMPACT_FEE and MF_RT_BASED_FEE for the aggregations
-        - calculate the difference between the two fee estimates
+        # DIFFERENCE RIF_calc/MF_calc/RIF_actual
+        - calculate the difference between the fee estimates and db
         - add a year attribute
         - fix and lingering oddities in the table (land use codes)
         - write to CSV

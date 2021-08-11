@@ -10,9 +10,9 @@ from pandas.api.types import is_float_dtype
 from arcgis import GeoAccessor, GeoSeriesAccessor
 
 # utilized to scale 2020 fee schedule to match year
-fee_scaler = {2015: 0.85, 2016: 0.88,
-              2017: 0.91, 2018: 0.94,
-              2019: 0.97, 2020: 1.0}
+fee_scaler = {2015: 1.43, 2016: 1.477,
+              2017: 1.527, 2018: 1.577,
+              2019: 1.628, 2020: 1.682}
 SCRIPT_PATH = Path(__file__)
 PROJ_PATH = SCRIPT_PATH.parent
 PERMITS_STATUS_DICT = dict(
@@ -170,6 +170,8 @@ def clean_permit_data(
     permit_df["PED_ORIENTED"] = np.where(
         permit_df.CAT_CODE.str.contains(PERMITS_CAT_CODE_PEDOR), 1, 0
     )
+    permit_df["CONST_COST"].loc[permit_df["PED_ORIENTED"] == 1] = \
+        permit_df["CONST_COST"] * 0.859     # reduction credit applied for pedestrian oriented projects
 
     # drop fake data - Keith Richardson of RER informed us that any PROC_NUM/ADDRESS that contains with 'SMPL' or
     #   'SAMPLE' should be ignored as as SAMPLE entry
@@ -205,7 +207,7 @@ def clean_permit_data(
     lu_df = lu_df.merge(right=dor_df, how="inner", on="DOR_UC")
     permit_df = permit_df.merge(right=lu_df, how="inner", on="CAT_CODE")
     permit_df = permit_df.merge(right=mobility_fee_df, how="inner",
-                                left_on="CAT_CODE", right_on="CODE")
+                                left_on="CAT_CODE", right_on="Code")
 
     # convert to points
     sdf = add_xy_from_poly(
@@ -239,10 +241,10 @@ if __name__ == "__main__":
     parcel_gdbs = r"C:\OneDrive_RP\OneDrive - Renaissance Planning Group\SHARE\PMT_link\Data\CLEANED"
 
     # ratio data files/paths
-    mobility_fee_data = Path(PROJ_PATH, "docs", "docs/MobilityFeeCalculation_v3_chs.xlsb.xlsx")
+    mobility_fee_data = Path(PROJ_PATH, "docs", "MobilityFeeCalculation_v3.xlsx")
     sheet_name = "MF_ByContextArea"
     column_names = [
-        "ITE Land Use Code",
+        "Code",
         "R1_In",
         "R2_In",
         "R2_Out",
@@ -256,12 +258,14 @@ if __name__ == "__main__":
     )
     rif_sched_df = pd.read_csv(rif_schedule_tbl)
 
-    out_folder = Path(PROJ_PATH, "outputs", "version4")
+    out_folder = Path(PROJ_PATH, "outputs", "version6_PDC_mult")
+    if not out_folder.exists():
+        out_folder.mkdir()
     dfs = []
     for year in [2015, 2016, 2017, 2018, 2019, 2020]:
         pdc_mult = fee_scaler[year]
         permits = list(raw_permits.glob(f"*{year}.csv"))
-        out_file = permits[0].stem
+        out_file = f"{permits[0].stem}_cleaned"
         parcels = make_path(parcel_gdbs, f"PMT_{year}.gdb", "Polygons", "Parcels")
         if year == 2020:
             parcels = make_path(parcel_gdbs, f"PMT_2019.gdb", "Polygons", "Parcels")
@@ -272,9 +276,13 @@ if __name__ == "__main__":
         rif_df["fee_inside"] *= pdc_mult
 
         # scale mf schedule values by year
-        mf_df = mf_sched_df * pdc_mult
+        mf_df = mf_sched_df.copy()
+        mf_df[["R1_In",
+               "R2_In", "R2_Out",
+               "R3_In", "R3_Out",
+               "R4_In", "R4_Out"]] * pdc_mult
 
-        # scale
+        # tidy permit data and georeference it to parcel centroids
         permit_gdf = clean_permit_data(
             permit_csv=permits[0],
             parcel_fc=parcels,
@@ -287,8 +295,8 @@ if __name__ == "__main__":
             out_crs=2881,
         )
         permit_gdf.to_crs(crs=summary_gdf.crs, inplace=True)
-        permit_gdf = permit_gdf.merge(right=mf_df,
-                                      left_on="CAT_CODE", right_on='ITE Land Use Code',
+        permit_gdf = permit_gdf.merge(right=rif_df,
+                                      left_on="CAT_CODE", right_on='CODE',
                                       how="inner")
 
         # id points inside and outside urban infill area
@@ -302,19 +310,16 @@ if __name__ == "__main__":
         intersect["RIF_CALCULATED"] = np.where(intersect["infill"] == True,
                                                intersect["fee_inside"] * intersect["UNITS_VAL"],
                                                intersect["fee_outside"] * intersect["UNITS_VAL"])
+        intersect["MF_CALCULATED"] = 0.0
         for ix, row in summary_gdf.iterrows():
             ring = row["Ring"]
             smart = row["SMART"]
-            if smart == 1:
-                smart = "Within"
-            if smart == 0:
-                smart = "Outside"
-            intersect["MF_CALCULATED"] = np.where(
-                intersect["Ring"] == ring & intersect["SMART"] == smart,
-                intersect[f"R{ring}_{smart}"] * intersect["UNITS_VAL"],
-            )
-        intersect["MOBILITY_FEE"] = intersect["COST"] * intersect["RATIO"]
-        intersect["DIFF_MF_vs_RF"] = intersect["MOBILITY_FEE"] - intersect["COST"]
+            intersect["MF_CALCULATED"].loc[
+                (intersect["Ring"] == ring) & (intersect["SMART"] == smart)
+                ] = intersect[f"R{ring}_{smart}"] * intersect["UNITS_VAL"]
+
+        intersect["DIFF_OF_CALCULATED"] = intersect["RIF_CALCULATED"] - intersect["MF_CALCULATED"]
+
         # drop duplicated RIF cons/adm/credit
         # zero out duplicated costs to 0 so the values arent repeated and get sum of Const/Admin/Credit
         intersect.loc[
@@ -329,17 +334,16 @@ if __name__ == "__main__":
             intersect.assign(d=intersect.CREDITS).duplicated(["PROC_NUM", "FOLIO"]),
             "CREDITS",
         ] = 0.0
-        intersect["ROAD_IMPACT_FEE"] = intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
+        intersect["RIF_ACTUAL"] = intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
 
         # summarize data by Context Area and various Landuse types
         df = (
-            intersect.groupby(["Ring", "SMART", "PED_ORIENTED",
-                               "CAT_CODE", "LANDUSE",
-                               "SPC_LU", "GN_VA_LU", "UNITS", ]
-                              )["ROAD_IMPACT_FEE", "MF_RT_BASED_FEE"].sum().reset_index()
-        # "MOBILITY_FEE", "DIFF_MF_vs_RF"
+            intersect.groupby(
+                ["Ring", "SMART", "STATUS", "PED_ORIENTED", "CAT_CODE", "LANDUSE", "SPC_LU", "GN_VA_LU", "UNITS",]
+                              )["RIF_CALCULATED", "MF_CALCULATED", "RIF_ACTUAL"].sum().reset_index()
         )
-        df["DIFF_MF_vs_RF"] = intersect["MF_RT_BASED_FEE"] - intersect["ROAD_IMPACT_FEE"]
+        df["DIFF_MF_RF_CALC"] = df["MF_CALCULATED"] - df["RIF_CALCULATED"]
+        df["DIFF_MF_RF_ACTUAL"] = df["MF_CALCULATED"] - df["RIF_ACTUAL"]
         df["YEAR"] = year
         df["SPC_LU"].replace({"0": "Unknown"}, inplace=True)
         df["GN_VA_LU"].replace({"0": "Unknown"}, inplace=True)
@@ -348,4 +352,5 @@ if __name__ == "__main__":
 
     # write out summary data
     out_data = pd.concat(dfs)
-    out_data.to_csv(os.path.join(out_folder, "RIF_summary_2015-2020.csv"))
+    # out_data.to_csv(os.path.join(out_folder, "RIF_summary_2015-2020.csv"))
+    out_data.to_excel(Path(out_folder, "RIF_summary_2015-2020.xlsx"), sheet_name="Summary_2015-2020")

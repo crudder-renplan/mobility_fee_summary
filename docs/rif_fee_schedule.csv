@@ -7,6 +7,7 @@ CODE,LU,fee_outside,fee_inside
 210-00,Single-Family Detached,6001,5674
 220-00,Apartment (Rentals),4214,3984
 222-00,High-Rise Apartment or Condominium (more than three floors),2634,2490
+231-00,Mid Rise Apart w/ 1st Commercial,2634,2490
 230-00,"Condominium, Townhouse",3674,3474
 240-00,Mobile Home,3129,2958
 251-00,Senior Adult Housing-Detached,2307,2182
