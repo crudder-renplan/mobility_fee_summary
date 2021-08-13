@@ -10,9 +10,14 @@ from pandas.api.types import is_float_dtype
 from arcgis import GeoAccessor, GeoSeriesAccessor
 
 # utilized to scale 2020 fee schedule to match year
-fee_scaler = {2015: 1.43, 2016: 1.477,
-              2017: 1.527, 2018: 1.577,
-              2019: 1.628, 2020: 1.682}
+fee_scaler = {
+    2015: 1.43,
+    2016: 1.477,
+    2017: 1.527,
+    2018: 1.577,
+    2019: 1.628,
+    2020: 1.682,
+}
 SCRIPT_PATH = Path(__file__)
 PROJ_PATH = SCRIPT_PATH.parent
 PERMITS_STATUS_DICT = dict(
@@ -58,7 +63,7 @@ def make_path(in_folder, *subnames):
 def csv_to_df(csv_file, use_cols, rename_dict):
     """
     Helper function to convert CSV file to pandas dataframe, and drop unnecessary columns
-    assumes any strings with comma (,) should have those removed and dtypes infered
+    assumes any strings with comma (,) should have those removed and dtypes inferred
 
     Args:
         csv_file (str): path to csv file
@@ -86,6 +91,8 @@ def add_xy_from_poly(poly_fc, poly_key, table_df, table_key, to_crs=None):
         poly_key (str): primary key from polygon feature class
         table_df (pd.DataFrame): pandas dataframe
         table_key (str): primary key of table df
+        to_crs (int): epsg code identifying the output crs used in the procedure, if not
+            provided no transformation is made
 
     Returns:
         pandas.DataFrame: updated `table_df` with XY centroid coordinates appended
@@ -101,9 +108,13 @@ def add_xy_from_poly(poly_fc, poly_key, table_df, table_key, to_crs=None):
     cols = [col for col in polys.columns.tolist() if col not in ["geometry", poly_key]]
     polys.drop(columns=cols, inplace=True)
     pts = polys.copy()
-    pts["geometry"] = pts['geometry'].centroid
+    pts["geometry"] = pts["geometry"].centroid
     return pd.merge(
-        left=table_df, right=pts, how="inner", left_on=table_key, right_on=poly_key,
+        left=table_df,
+        right=pts,
+        how="inner",
+        left_on=table_key,
+        right_on=poly_key,
     )
 
 
@@ -170,8 +181,9 @@ def clean_permit_data(
     permit_df["PED_ORIENTED"] = np.where(
         permit_df.CAT_CODE.str.contains(PERMITS_CAT_CODE_PEDOR), 1, 0
     )
-    permit_df["CONST_COST"].loc[permit_df["PED_ORIENTED"] == 1] = \
-        permit_df["CONST_COST"] * 0.859     # reduction credit applied for pedestrian oriented projects
+    permit_df["CONST_COST"].loc[permit_df["PED_ORIENTED"] == 1] = (
+            permit_df["CONST_COST"] * 0.859
+    )  # reduction credit applied for pedestrian oriented projects
 
     # drop fake data - Keith Richardson of RER informed us that any PROC_NUM/ADDRESS that contains with 'SMPL' or
     #   'SAMPLE' should be ignored as as SAMPLE entry
@@ -206,20 +218,30 @@ def clean_permit_data(
     dor_df = pd.read_csv(dor_lu_tbl)
     lu_df = lu_df.merge(right=dor_df, how="inner", on="DOR_UC")
     permit_df = permit_df.merge(right=lu_df, how="inner", on="CAT_CODE")
-    permit_df = permit_df.merge(right=mobility_fee_df, how="inner",
-                                left_on="CAT_CODE", right_on="Code")
+    permit_df = permit_df.merge(
+        right=mobility_fee_df, how="inner", left_on="CAT_CODE", right_on="Code"
+    )
 
     # convert to points
     sdf = add_xy_from_poly(
-        poly_fc=parcel_fc, poly_key=poly_key, table_df=permit_df, table_key=permit_key, to_crs=out_crs
+        poly_fc=parcel_fc,
+        poly_key=poly_key,
+        table_df=permit_df,
+        table_key=permit_key,
+        to_crs=out_crs,
     )
     sdf.fillna(0.0, inplace=True)
 
-    sdf = gpd.GeoDataFrame(sdf, geometry=sdf['geometry'], crs=out_crs)
+    sdf = gpd.GeoDataFrame(sdf, geometry=sdf["geometry"], crs=out_crs)
     conversion = {col: float for col in sdf.columns if is_numeric_dtype(sdf[col])}
     sdf = sdf.astype(conversion)
     sdf.to_file(out_file)
     return sdf
+
+
+def lu_cost_alloc_factor(val_list):
+    total = abs(sum(val_list))
+    return [val / total for val in val_list]
 
 
 if __name__ == "__main__":
@@ -258,7 +280,7 @@ if __name__ == "__main__":
     )
     rif_sched_df = pd.read_csv(rif_schedule_tbl)
 
-    out_folder = Path(PROJ_PATH, "outputs", "version6_PDC_mult")
+    out_folder = Path(PROJ_PATH, "outputs", "version6_PDC_mult2")
     if not out_folder.exists():
         out_folder.mkdir()
     dfs = []
@@ -277,10 +299,9 @@ if __name__ == "__main__":
 
         # scale mf schedule values by year
         mf_df = mf_sched_df.copy()
-        mf_df[["R1_In",
-               "R2_In", "R2_Out",
-               "R3_In", "R3_Out",
-               "R4_In", "R4_Out"]] * pdc_mult
+        # mf_df[
+        #     ["R1_In", "R2_In", "R2_Out", "R3_In", "R3_Out", "R4_In", "R4_Out"]
+        # ]  *= pdc_mult
 
         # tidy permit data and georeference it to parcel centroids
         permit_gdf = clean_permit_data(
@@ -295,9 +316,9 @@ if __name__ == "__main__":
             out_crs=2881,
         )
         permit_gdf.to_crs(crs=summary_gdf.crs, inplace=True)
-        permit_gdf = permit_gdf.merge(right=rif_df,
-                                      left_on="CAT_CODE", right_on='CODE',
-                                      how="inner")
+        permit_gdf = permit_gdf.merge(
+            right=rif_df, left_on="CAT_CODE", right_on="CODE", how="inner"
+        )
 
         # id points inside and outside urban infill area
         permit_gdf["infill"] = permit_gdf.intersects(infill_gdf.unary_union)
@@ -306,44 +327,74 @@ if __name__ == "__main__":
         intersect = pd.DataFrame(
             gpd.overlay(df1=summary_gdf, df2=permit_gdf, keep_geom_type=False)
         )
-        # calculate
-        intersect["RIF_CALCULATED"] = np.where(intersect["infill"] == True,
-                                               intersect["fee_inside"] * intersect["UNITS_VAL"],
-                                               intersect["fee_outside"] * intersect["UNITS_VAL"])
+        # calculate RIF from schedules
+        intersect["RIF_CALCULATED"] = np.where(
+            intersect["infill"] == True,
+            intersect["fee_inside"] * intersect["UNITS_VAL"],
+            intersect["fee_outside"] * intersect["UNITS_VAL"],
+        )
+        # calculate MF from schedules
         intersect["MF_CALCULATED"] = 0.0
         for ix, row in summary_gdf.iterrows():
             ring = row["Ring"]
             smart = row["SMART"]
             intersect["MF_CALCULATED"].loc[
                 (intersect["Ring"] == ring) & (intersect["SMART"] == smart)
-                ] = intersect[f"R{ring}_{smart}"] * intersect["UNITS_VAL"]
+                ] = (intersect[f"R{ring}_{smart}"] * intersect["UNITS_VAL"])
 
-        intersect["DIFF_OF_CALCULATED"] = intersect["RIF_CALCULATED"] - intersect["MF_CALCULATED"]
+        intersect["DIFF_OF_CALCULATED"] = (
+                intersect["RIF_CALCULATED"] - intersect["MF_CALCULATED"]
+        )
+        # back into proportion attributed to each LU using a lu_cost_allocation calc
+        gb_sums = intersect.groupby("PROC_NUM").agg(
+            {"RIF_CALCULATED": lambda s: abs(s.sum())}
+        )
+        gb_sums.rename(columns={"RIF_CALCULATED": "rif_sums"}, inplace=True)
+        intersect = intersect.merge(gb_sums, left_on="PROC_NUM", right_index=True)
+        intersect["rif_factor"] = (intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
+                                  ) / intersect["rif_sums"]
+        intersect["RIF_ACTUAL"] = intersect['RIF_CALCULATED'] * intersect["rif_factor"]
 
         # drop duplicated RIF cons/adm/credit
         # zero out duplicated costs to 0 so the values arent repeated and get sum of Const/Admin/Credit
-        intersect.loc[
-            intersect.assign(d=intersect.CONST_COST).duplicated(["PROC_NUM", "FOLIO"]),
-            "CONST_COST",
-        ] = 0.0
-        intersect.loc[
-            intersect.assign(d=intersect.ADMIN_COST).duplicated(["PROC_NUM", "FOLIO"]),
-            "ADMIN_COST",
-        ] = 0.0
-        intersect.loc[
-            intersect.assign(d=intersect.CREDITS).duplicated(["PROC_NUM", "FOLIO"]),
-            "CREDITS",
-        ] = 0.0
-        intersect["RIF_ACTUAL"] = intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
+        # intersect.loc[
+        #     intersect.assign(d=intersect.CONST_COST).duplicated(["PROC_NUM", "FOLIO"]),
+        #     "CONST_COST",
+        # ] = 0.0
+        # intersect.loc[
+        #     intersect.assign(d=intersect.ADMIN_COST).duplicated(["PROC_NUM", "FOLIO"]),
+        #     "ADMIN_COST",
+        # ] = 0.0
+        # intersect.loc[
+        #     intersect.assign(d=intersect.CREDITS).duplicated(["PROC_NUM", "FOLIO"]),
+        #     "CREDITS",
+        # ] = 0.0
+        # intersect["RIF_ACTUAL"] = (
+        #     intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
+        # )
 
         # summarize data by Context Area and various Landuse types
         df = (
             intersect.groupby(
-                ["Ring", "SMART", "STATUS", "PED_ORIENTED", "CAT_CODE", "LANDUSE", "SPC_LU", "GN_VA_LU", "UNITS",]
-                              )["RIF_CALCULATED", "MF_CALCULATED", "RIF_ACTUAL"].sum().reset_index()
+                [
+                    "Ring",
+                    "SMART",
+                    "STATUS",
+                    "PED_ORIENTED",
+                    "PROC_NUM",
+                    "CAT_CODE",
+                    "LANDUSE",
+                    "SPC_LU",
+                    "GN_VA_LU",
+                    "UNITS",
+                ]
+            )["RIF_CALCULATED", "MF_CALCULATED", "RIF_ACTUAL"]
+                .sum()
+                .reset_index()
         )
-        df["DIFF_MF_RF_CALC"] = df["MF_CALCULATED"] - df["RIF_CALCULATED"]
-        df["DIFF_MF_RF_ACTUAL"] = df["MF_CALCULATED"] - df["RIF_ACTUAL"]
+        df["DIFF_RFc_RFa"] = df["RIF_CALCULATED"] - df["RIF_ACTUAL"]
+        df["DIFF_MFc_RFc"] = df["MF_CALCULATED"] - df["RIF_CALCULATED"]
+        df["DIFF_MFc_RFa"] = df["MF_CALCULATED"] - df["RIF_ACTUAL"]
         df["YEAR"] = year
         df["SPC_LU"].replace({"0": "Unknown"}, inplace=True)
         df["GN_VA_LU"].replace({"0": "Unknown"}, inplace=True)
@@ -353,4 +404,6 @@ if __name__ == "__main__":
     # write out summary data
     out_data = pd.concat(dfs)
     # out_data.to_csv(os.path.join(out_folder, "RIF_summary_2015-2020.csv"))
-    out_data.to_excel(Path(out_folder, "RIF_summary_2015-2020.xlsx"), sheet_name="Summary_2015-2020")
+    out_data.to_excel(
+        Path(out_folder, "RIF_summary_2015-2020.xlsx"), sheet_name="Summary_2015-2020"
+    )
