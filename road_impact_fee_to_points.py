@@ -280,7 +280,7 @@ if __name__ == "__main__":
     )
     rif_sched_df = pd.read_csv(rif_schedule_tbl)
 
-    out_folder = Path(PROJ_PATH, "outputs", "version6_PDC_mult2")
+    out_folder = Path(PROJ_PATH, "outputs", "version7_rifFactor_newMFschedules")
     if not out_folder.exists():
         out_folder.mkdir()
     dfs = []
