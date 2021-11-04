@@ -1,13 +1,12 @@
+import datetime
 import os
 from pathlib import Path
 
-import fiona
 import geopandas as gpd
 import numpy as np
 import pandas as pd
-from pandas.api.types import is_numeric_dtype
 from pandas.api.types import is_float_dtype
-from arcgis import GeoAccessor, GeoSeriesAccessor
+from pandas.api.types import is_numeric_dtype
 
 # utilized to scale 2020 fee schedule to match year
 fee_scaler = {
@@ -134,11 +133,15 @@ def clean_permit_data(
     Reformat and clean RER road impact permit data, specific to the TOC tool
 
     Args:
-        permit_csv (str): path to permit csv
+        permit_csv (str; Path): path to permit csv
+        parcel_fc (str; Path): path to parcel feature class
         permit_key (str): foreign key of permit data that ties to parcels ("FOLIO")
-        rif_lu_tbl (str): path to road_impact_fee_cat_codes table (maps RIF codes to more standard LU codes)
-        dor_lu_tbl (str): path to dor use code table (maps DOR LU codes to more standard and generalized categories)
-        out_file (str): path to output permit csv
+        poly_key (str): primary key identifying unique parcel ("FOLIO")
+        rif_lu_tbl (str; Path): path to road_impact_fee_cat_codes table (maps RIF codes to more standard LU codes)
+        dor_lu_tbl (str; Path): path to dor use code table (maps DOR LU codes to more standard and generalized categories)
+        mobility_fee_df (pd.Dataframe): mobility fee dataframe
+        out_file (str, Path): path to output permit csv
+        out_crs (int): EPSG code of output dataset
 
     Returns:
         None
@@ -181,9 +184,6 @@ def clean_permit_data(
     permit_df["PED_ORIENTED"] = np.where(
         permit_df.CAT_CODE.str.contains(PERMITS_CAT_CODE_PEDOR), 1, 0
     )
-    permit_df["CONST_COST"].loc[permit_df["PED_ORIENTED"] == 1] = (
-            permit_df["CONST_COST"] * 0.859
-    )  # reduction credit applied for pedestrian oriented projects
 
     # drop fake data - Keith Richardson of RER informed us that any PROC_NUM/ADDRESS that contains with 'SMPL' or
     #   'SAMPLE' should be ignored as as SAMPLE entry
@@ -263,28 +263,23 @@ if __name__ == "__main__":
     parcel_gdbs = r"C:\OneDrive_RP\OneDrive - Renaissance Planning Group\SHARE\PMT_link\Data\CLEANED"
 
     # ratio data files/paths
-    mobility_fee_data = Path(PROJ_PATH, "docs", "MobilityFeeCalculation_v3.xlsx")
-    sheet_name = "MF_ByContextArea"
-    column_names = [
-        "Code",
-        "R1_In",
-        "R2_In",
-        "R2_Out",
-        "R3_In",
-        "R3_Out",
-        "R4_In",
-        "R4_Out",
-    ]
+    mobility_fee_data = Path(PROJ_PATH, "docs", "MobilityFeeCalculation_v5a.xlsx")
+    sheet_name = "FEE_ByContextArea_ByMode_CODE"
+    column_names = ["Code"] + \
+                   [f"{col}_{mode}" for col in ["R1_In", "R2_In", "R3_In", "R4_In", "R2_Out", "R3_Out", "R4_Out", ]
+                    for mode in ["Road", "Transit", "Walk_Bike"]]
+
     mf_sched_df = pd.read_excel(
         io=mobility_fee_data, sheet_name=sheet_name, header=0, usecols=column_names
     )
+    # mf_sched_df = mf_sched_df[column_names]
     rif_sched_df = pd.read_csv(rif_schedule_tbl)
 
-    out_folder = Path(PROJ_PATH, "outputs", "version7_rifFactor_newMFschedules")
+    out_folder = Path(PROJ_PATH, "outputs", "version13_splitMode")
     if not out_folder.exists():
         out_folder.mkdir()
     dfs = []
-    for year in [2015, 2016, 2017, 2018, 2019, 2020]:
+    for year in [2015, 2016, 2017, 2018, 2019, 2020]:  # , 2016, 2017, 2018, 2019, 2020
         pdc_mult = fee_scaler[year]
         permits = list(raw_permits.glob(f"*{year}.csv"))
         out_file = f"{permits[0].stem}_cleaned"
@@ -303,7 +298,7 @@ if __name__ == "__main__":
         #     ["R1_In", "R2_In", "R2_Out", "R3_In", "R3_Out", "R4_In", "R4_Out"]
         # ]  *= pdc_mult
 
-        # tidy permit data and georeference it to parcel centroids
+        # tidy permit data and geo-reference it to parcel centroids
         permit_gdf = clean_permit_data(
             permit_csv=permits[0],
             parcel_fc=parcels,
@@ -327,71 +322,58 @@ if __name__ == "__main__":
         intersect = pd.DataFrame(
             gpd.overlay(df1=summary_gdf, df2=permit_gdf, keep_geom_type=False)
         )
-        # calculate RIF from schedules
+        # drop rows where Admin fee is greater than 5% of Construction Fee
+        intersect = intersect[intersect["ADMIN_COST"] < (intersect["CONST_COST"] * 0.05)]
+
+        # calculate RIF from schedules and apply ped discount
         intersect["RIF_CALCULATED"] = np.where(
             intersect["infill"] == True,
             intersect["fee_inside"] * intersect["UNITS_VAL"],
             intersect["fee_outside"] * intersect["UNITS_VAL"],
         )
-        # calculate MF from schedules
-        intersect["MF_CALCULATED"] = 0.0
+        intersect["RIF_CALCULATED"].loc[intersect["PED_ORIENTED"] == 1] = (
+                intersect["RIF_CALCULATED"] * 0.859
+        )  # reduction credit applied for pedestrian oriented projects
+
+        # calculate MF from schedules and apply ped discount
+        modes = ["Road", "Transit", "Walk_Bike"]
+        mf_calc_modes = [f"MF_CALC_{mode}" for mode in modes]
+        for mode in mf_calc_modes:
+            intersect[mode] = 0.0
         for ix, row in summary_gdf.iterrows():
             ring = row["Ring"]
             smart = row["SMART"]
-            intersect["MF_CALCULATED"].loc[
-                (intersect["Ring"] == ring) & (intersect["SMART"] == smart)
-                ] = (intersect[f"R{ring}_{smart}"] * intersect["UNITS_VAL"])
+            for mode in modes:
+                intersect[f"MF_CALC_{mode}"].loc[
+                    (intersect["Ring"] == ring) & (intersect["SMART"] == smart)
+                    ] = (intersect[f"R{ring}_{smart}_{mode}"] * intersect["UNITS_VAL"])
+        intersect["MF_CALCULATED"] = intersect[mf_calc_modes].sum(axis=1)
 
-        intersect["DIFF_OF_CALCULATED"] = (
-                intersect["RIF_CALCULATED"] - intersect["MF_CALCULATED"]
-        )
+        # reduction credit applied for pedestrian oriented projects
+        for mode in mf_calc_modes + ["MF_CALCULATED"]:
+            intersect[mode].loc[intersect["PED_ORIENTED"] == 1] = (
+                    intersect[mode] * 0.859
+            )
+        # difference of
+        intersect[f"DIFF_OF_CALCULATED"] = (
+                    intersect["RIF_CALCULATED"] - intersect[f"MF_CALCULATED"]
+            )
+
         # back into proportion attributed to each LU using a lu_cost_allocation calc
-        gb_sums = intersect.groupby("PROC_NUM").agg(
-            {"RIF_CALCULATED": lambda s: abs(s.sum())}
-        )
+        gb_sums = intersect.groupby("PROC_NUM").agg({"RIF_CALCULATED": lambda s: abs(s.sum())})
         gb_sums.rename(columns={"RIF_CALCULATED": "rif_sums"}, inplace=True)
         intersect = intersect.merge(gb_sums, left_on="PROC_NUM", right_index=True)
         intersect["rif_factor"] = (intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
-                                  ) / intersect["rif_sums"]
+                                   ) / intersect["rif_sums"]
         intersect["RIF_ACTUAL"] = intersect['RIF_CALCULATED'] * intersect["rif_factor"]
-
-        # drop duplicated RIF cons/adm/credit
-        # zero out duplicated costs to 0 so the values arent repeated and get sum of Const/Admin/Credit
-        # intersect.loc[
-        #     intersect.assign(d=intersect.CONST_COST).duplicated(["PROC_NUM", "FOLIO"]),
-        #     "CONST_COST",
-        # ] = 0.0
-        # intersect.loc[
-        #     intersect.assign(d=intersect.ADMIN_COST).duplicated(["PROC_NUM", "FOLIO"]),
-        #     "ADMIN_COST",
-        # ] = 0.0
-        # intersect.loc[
-        #     intersect.assign(d=intersect.CREDITS).duplicated(["PROC_NUM", "FOLIO"]),
-        #     "CREDITS",
-        # ] = 0.0
-        # intersect["RIF_ACTUAL"] = (
-        #     intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"]
-        # )
+        # intersect["RIF_ACTUAL_ORIGINAL"] = (intersect["CONST_COST"] + intersect["ADMIN_COST"] + intersect["CREDITS"])
 
         # summarize data by Context Area and various Landuse types
-        df = (
-            intersect.groupby(
-                [
-                    "Ring",
-                    "SMART",
-                    "STATUS",
-                    "PED_ORIENTED",
-                    "PROC_NUM",
-                    "CAT_CODE",
-                    "LANDUSE",
-                    "SPC_LU",
-                    "GN_VA_LU",
-                    "UNITS",
-                ]
-            )["RIF_CALCULATED", "MF_CALCULATED", "RIF_ACTUAL"]
-                .sum()
-                .reset_index()
-        )
+        groupby_cols = ["Ring", "SMART", "STATUS", "PED_ORIENTED", "PROC_NUM",
+                        "CAT_CODE", "LANDUSE", "SPC_LU", "GN_VA_LU", "UNITS_VAL", "UNITS",]
+        sum_cols = ["RIF_CALCULATED"] + mf_calc_modes + ["MF_CALCULATED", "RIF_ACTUAL"]
+        df = (intersect.groupby(groupby_cols)[sum_cols].sum().reset_index())
+
         df["DIFF_RFc_RFa"] = df["RIF_CALCULATED"] - df["RIF_ACTUAL"]
         df["DIFF_MFc_RFc"] = df["MF_CALCULATED"] - df["RIF_CALCULATED"]
         df["DIFF_MFc_RFa"] = df["MF_CALCULATED"] - df["RIF_ACTUAL"]
@@ -404,6 +386,7 @@ if __name__ == "__main__":
     # write out summary data
     out_data = pd.concat(dfs)
     # out_data.to_csv(os.path.join(out_folder, "RIF_summary_2015-2020.csv"))
+    date_str = datetime.datetime.now().strftime("%m%d%y")
     out_data.to_excel(
-        Path(out_folder, "RIF_summary_2015-2020.xlsx"), sheet_name="Summary_2015-2020"
+        Path(out_folder, f"RIF_summary_2015-2020_{date_str}.xlsx"), sheet_name="Summary_2015-2020"
     )
